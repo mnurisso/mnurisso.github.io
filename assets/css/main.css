@@ -83,7 +83,6 @@ input, select, textarea {
 	}
 
 	@media screen and (max-width: 480px) {
-
 		html, body {
 			min-width: 320px;
 		}
@@ -3200,8 +3199,19 @@ input, select, textarea {
 							}
 
 		}
+		
+		@media screen and (max-width:720px){
+			#header {
+				height: 5.50em;
+			}
+		}
 
 		@media screen and (max-width: 480px) {
+			
+			#header {
+				height: 5.50em;
+				line-height: 2.75em;
+			}
 
 			#header nav a[href="#menu"] {
 				width: 4em;
