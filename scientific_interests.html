@@ -10,13 +10,12 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="author" content="Matteo Nurisso">
-		<meta name="description" content="I'm Matteo Nurisso, a Ph.D. in astrophisics at (SISSA). 
-		I worked on Computational Astrophysics, Plasma Physics, and Magnetohydrodynamics (MHD).
-		Currently I'm a Scientific Programmer at CNR-ISAC of Turin, working on the field of climate science in the Destination Earth project.">
+		<meta name="description" content="I'm Matteo Nurisso, a Ph.D. in physics (SISSA). 
+		Currently I'm a Postdoc at CNR-ISAC of Turin, working on the field of climate science in the Destination Earth project.">
 		<meta name="keywords" content="Matteo, Nurisso, Matteo Nurisso, Magnetic Reconnection, magnetic,
 		reconnection, SISSA, PLUTO, Computational, Science, Astrophysicist, Italy, Torino,
 		Turin, simulation, Trieste, Climate, Destination, Earth, DestinE, CNR, Isac, CNR-ISAC,
-		teleconnections, NAO, ENSO,elNino,laNina, data science, data engeenering, paleoclimate,
+		teleconnections, NAO, ENSO, elNino, laNina, data science, data engineering, paleoclimate,
 		EC-Earth, EPOCHAL, outreach, Silviadizenzero, Ginger Fest">
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -66,40 +65,34 @@
 						<!-- Content -->
 							<div class="wrapper">
 								<div class="inner">
-									<h2 class="major">Current research</h2>
 									<p>
 									Currently I'm a <a href="https://www.isac.cnr.it/en/users/matteo-nurisso">PostDoc at CNR-ISAC of Turin</a>, 
-									working on the field of climate science in the <strong>Destination Earth</strong> project and 
+									working on the field of Climate Science in the <strong>Climate Change Adaptation Digital Twin</strong> in the <strong>Destination Earth</strong> project and 
 									in the <strong>EPOCHAL</strong> project in the framework of the paleoclimate.
 									</p>
 
-									<h3 class="major">Destination Earth</h3>
+									<h2 class="major">AQUA code for the ClimateDT</h2>
+
 									<p>
-									From <a href="https://www.ecmwf.int/en/about/what-we-do/environmental-services-and-future-vision/destination-earth">ECMWF website</a>:
-									<blockquote cite="https://www.ecmwf.int/en/about/what-we-do/environmental-services-and-future-vision/destination-earth">
-									Using an unprecedented amount of data, innovative Earth system models and cutting-edge computing,
-									Destination Earth will allow users to explore interactively the different components of the 
-									Earth system and natural and human-induced change. 
-									They will be able and to look at the past and present and to test and develop future scenarios.
-									</blockquote>
-									On the <a href="https://stories.ecmwf.int/explainer-digitaltwins/index.html">ECMWF website</a> you can find more information about
-									the project and the concept of <strong>digital twins</strong>.
+										The Application for QUality Assessment (AQUA) is a model evaluation framework designed for running diagnostics on high-resolution climate models,
+										specifically for Climate DT climate simulations being part of Destination Earth activity.
+										The package provides a flexible and efficient python3 framework to process and analyze large volumes of climate data.
+										With its modular design, AQUA offers seamless integration of core functions and a wide range of diagnostic tools that can be run in parallel.
 									</p>
 
-									<center>
-									<iframe width="560" height="315" src="https://www.youtube.com/embed/5ZMq6l821w4?si=KrwynCkYzLP7ccsB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-									</center>
-									
-									<h4 class="major">AQUA package</h4>
 									<p>
-										In the framework of the Destination Earth project, I'm working on the implementation of a
-										<strong>quality assessment tool</strong> for climate simulations.
-										This is <strong>AQUA</strong> (Application for QUality Assessment), 
-										composed by a central framework that provide data access and preprocessing functionalities,
-										together with a series of modular and independent diagnostics.
-										These will be run in the context of Destination Earth to continuously monitor and evaluate the simulation runs.
-										<br>
-										A first version of the tool has been presented at the EGU General Assembly 2024 and it will be very soon open to the community.
+										I am one of the main developers of AQUA, and I am responsible for the implementation of the core framework and the development of new diagnostics.
+										The code is already public and available on <a href="https://github.com/DestinE-Climate-DT/AQUA">GitHub</a>.
+									</p>
+
+									<figure style="text-align: center;">
+										<img src="images/aqua.png" alt="AQUA" style="display: block; margin: 0 auto; max-width: 60%; height: auto;" />
+										<figcaption style="margin-top: 10px; font-style: italic;">Figure: AQUA role in the ClimateDT workflow. Image from  <a href="https://destine.ecmwf.int/news/aqua-application-quality-assessment-climate-dt-destination-earth/">DestinE-ECMWF</a> website.</figcaption>
+									</figure>
+
+									<p>
+										The code, as represented in the figure above, is already part of the operational workflow of the ClimateDT.
+										Its usage is not limited to the ClimateDT, but offers a flexible framework that can be used to run diagnostics on any climate model.
 									</p>
 
 									<h3 class="major">EPOCHAL</h3>
@@ -108,7 +101,7 @@
 									that aims to study the <strong>paleoclimate</strong> with the use of Earth system models.
 									In particular, I'm working on the implementation of lower resolutions in the <strong>EC-Earth4</strong> model,
 									in order to be able to run long simulations of the paleoclimate.
-									This will require appropriate modifications of the boundary, initial, and forcing conditions.
+									This requires appropriate modifications of the boundary, initial, and forcing conditions.
 									</p>
 									<p>
 									The low resolution version of the model will give to the paleoclimatic community a valuable tool
