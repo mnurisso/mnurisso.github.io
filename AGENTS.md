@@ -145,6 +145,9 @@ ClimateDT simulations visual (Andreas Müller, ECMWF, destine.ecmwf.int), precip
 ## 6. Reference data (verified from public sources, Oct 2026)
 
 - ORCID: `0000-0002-5962-0680`. GitHub: `mnurisso`. LinkedIn: `matteo-nurisso`. Email: `matteo.nurisso@polito.it`.
+- Location: the owner **is based in Trieste** (portrait caption, contact list, JSON-LD `homeLocation`). The employer is
+  Politecnico di Torino, so the affiliation is named as such but Turin is not used as his location. Timeline entries keep
+  the place of each institution (Turin for PoliTo and UniTo, Trieste for SISSA).
 - AQUA core: GitHub `DestinE-Climate-DT/AQUA`, PyPI `aqua-core`, conda-forge `aqua-core`, docs `aqua.readthedocs.io`,
   Zenodo `10.5281/zenodo.14906075`, paper GMD `10.5194/gmd-19-7725-2026`, container docs `aqua.readthedocs.io/en/latest/container.html`.
 - AQUA diagnostics: GitHub `DestinE-Climate-DT/AQUA-diagnostics`, PyPI `aqua-diagnostics`,
