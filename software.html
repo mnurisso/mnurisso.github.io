@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Software — Matteo Nurisso</title>
+	<meta name="author" content="Matteo Nurisso">
+	<meta name="description" content="Scientific software by Matteo Nurisso: AQUA, the Application for QUality Assessment of the Destination Earth Climate Digital Twin, its diagnostics, data catalogs and other open-source climate and astrophysics tools.">
+	<meta name="theme-color" content="#002b36">
+	<link rel="canonical" href="https://mnurisso.github.io/software.html">
+	<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Scientific software — Matteo Nurisso">
+	<meta property="og:description" content="AQUA, AQUA-diagnostics, climate data catalogs and other open-source scientific software.">
+	<meta property="og:url" content="https://mnurisso.github.io/software.html">
+	<script>
+		// Runs before first paint: dark theme by default (Solarized), remembered choice wins.
+		try {
+			var d = document.documentElement;
+			d.classList.add('js');
+			var t = localStorage.getItem('theme');
+			d.dataset.theme = (t === 'light' || t === 'dark') ? t : 'dark';
+		} catch (e) { document.documentElement.dataset.theme = 'dark'; document.documentElement.classList.add('js'); }
+		// If the main script fails to load, fall back to the no-JS layout.
+		setTimeout(function () { if (!window.__mnReady) document.documentElement.classList.remove('js'); }, 3000);
+	</script>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script defer src="assets/js/flow.js"></script>
+	<script defer src="assets/js/github.js"></script>
+	<script defer src="assets/js/main.js"></script>
+</head>
+<body class="page-software">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+	<defs>
+		<symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+		<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+		<symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+		<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></symbol>
+		<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+		<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+		<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></symbol>
+		<symbol id="i-package" viewBox="0 0 24 24"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></symbol>
+		<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+		<symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+		<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+		<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+		<symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+		<symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+		<symbol id="i-cmd" viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></symbol>
+		<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+		<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+	</defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Header -->
+<header class="site-header" id="top">
+	<div class="container header-inner">
+		<a class="brand" href="index.html" aria-label="Matteo Nurisso — back to top">
+			<span class="brand-mark" aria-hidden="true">MN</span>
+			<span class="brand-name">Matteo Nurisso</span>
+		</a>
+
+		<nav class="nav" id="nav" aria-label="Primary">
+			<a href="index.html#research">Research</a>
+			<a href="index.html#publications">Publications</a>
+			<a href="software.html" aria-current="page">Software</a>
+			<a href="index.html#career">Career</a>
+			<a href="index.html#events">Talks &amp; events</a>
+			<a href="index.html#outreach">Outreach</a>
+			<a href="index.html#contact">Contact</a>
+		</nav>
+
+		<div class="header-actions">
+			<button class="icon-btn kbd-btn" type="button" id="palette-open" aria-label="Open command menu" title="Command menu (Ctrl/⌘ K)">
+				<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+				<kbd>⌘K</kbd>
+			</button>
+			<button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle colour theme" title="Toggle theme">
+				<svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+				<svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+			</button>
+			<button class="icon-btn nav-toggle" type="button" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+				<svg class="icon icon-open" aria-hidden="true"><use href="#i-menu"/></svg>
+				<svg class="icon icon-close" aria-hidden="true"><use href="#i-close"/></svg>
+			</button>
+		</div>
+	</div>
+	<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+	<!-- Intro -->
+	<section class="page-hero" aria-labelledby="sw-title">
+		<canvas class="hero-canvas" id="flow-canvas" aria-hidden="true"></canvas>
+		<div class="container">
+			<nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a> <span aria-hidden="true">/</span> <span aria-current="page">Software</span></nav>
+			<p class="eyebrow"><span class="dot" aria-hidden="true"></span><span>Open source</span></p>
+			<h1 id="sw-title">Scientific <span class="grad">software</span></h1>
+			<p class="lead">Tools I develop to access, evaluate and understand the output of high-resolution climate models —
+			written in Python, used in the operational workflow of the Destination Earth Climate Digital Twin, and open to everyone.</p>
+
+			<dl class="stats stats-inline" aria-label="Software at a glance">
+				<div><dt>Commits across these projects</dt><dd data-live="commits">—</dd></div>
+				<div><dt>Active projects</dt><dd data-count="active">4</dd></div>
+				<div><dt>Core release on PyPI</dt><dd data-live="version">—</dd></div>
+				<div><dt>License</dt><dd>Apache-2.0</dd></div>
+			</dl>
+		</div>
+	</section>
+
+	<!-- Page sub-navigation -->
+	<nav class="subnav" aria-label="On this page">
+		<div class="container subnav-inner">
+			<a href="#aqua">AQUA</a>
+			<a href="#ecosystem">Ecosystem</a>
+			<a href="#projects">Projects</a>
+			<a href="#stack">Stack</a>
+		</div>
+	</nav>
+
+	<!-- Flagship -->
+	<section class="section" id="aqua" aria-labelledby="aqua-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Flagship project</p>
+				<h2 id="aqua-title">AQUA</h2>
+				<p class="section-sub">The Application for QUality Assessment — a model evaluation framework for the Climate Change Adaptation Digital Twin.</p>
+			</div>
+
+			<div class="feature">
+				<div class="feature-text">
+					<p>AQUA is a model evaluation framework designed for running diagnostics on high-resolution climate models,
+					specifically for Climate DT climate simulations being part of Destination Earth activity.
+					The package provides a flexible and efficient Python&nbsp;3 framework to process and analyze large volumes of climate data.
+					With its modular design, AQUA offers seamless integration of core functions and a wide range of diagnostic tools that can be run in parallel.</p>
+					<p>I am one of the main developers of AQUA, and I am responsible for the implementation of the core framework and the development of new diagnostics.</p>
+
+					<ul class="checks">
+						<li>Efficient handling of large datasets from high-resolution climate models</li>
+						<li>Support for various data formats, such as NetCDF, GRIB, Zarr or FDB</li>
+						<li>Robust and fast regridding functionality based on CDO</li>
+						<li>Averaging and aggregation tools for temporal and spatial analyses</li>
+						<li>Modular design for easy integration of new diagnostics</li>
+					</ul>
+
+					<p class="actions">
+						<a class="btn btn-primary btn-sm" href="https://aqua.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Documentation</a>
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/aqua-core/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI</a>
+						<a class="btn btn-sm" href="https://anaconda.org/conda-forge/aqua-core"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> conda-forge</a>
+					</p>
+					<p class="actions">
+						<a class="btn btn-ghost btn-sm" href="https://doi.org/10.5194/gmd-19-7725-2026">Paper (GMD)</a>
+						<a class="btn btn-ghost btn-sm" href="https://doi.org/10.5281/zenodo.14906075">Zenodo DOI</a>
+						<a class="btn btn-ghost btn-sm" href="https://destine.ecmwf.int/news/aqua-application-quality-assessment-climate-dt-destination-earth/">DestinE news</a>
+					</p>
+				</div>
+
+				<figure class="feature-fig zoomable">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: AQUA role in the ClimateDT workflow">
+						<img src="images/aqua.webp" width="745" height="997" loading="lazy" alt="Diagram of the ClimateDT end-to-end workflow: climate models (ICON, IFS-NEMO, IFS-FESOM) produce a Generic State Vector in the Field DataBase, which AQUA turns into a low-resolution archive with state-of-the-art diagnostics and frontier diagnostics on high-resolution data.">
+					</button>
+					<figcaption>AQUA role in the ClimateDT workflow. Image from the <a href="https://destine.ecmwf.int/news/aqua-application-quality-assessment-climate-dt-destination-earth/">DestinE-ECMWF</a> website.</figcaption>
+				</figure>
+			</div>
+
+			<!-- Install -->
+			<div class="install tabs" data-tabs>
+				<div class="install-head">
+					<h3>Try it</h3>
+					<div class="tablist tablist-sm" role="tablist" aria-label="Installation method">
+						<button role="tab" id="tab-conda" aria-controls="panel-conda" aria-selected="true">conda-forge</button>
+						<button role="tab" id="tab-pip" aria-controls="panel-pip" aria-selected="false" tabindex="-1">PyPI</button>
+						<button role="tab" id="tab-src" aria-controls="panel-src" aria-selected="false" tabindex="-1">From source</button>
+					</div>
+				</div>
+				<div class="tabpanel" role="tabpanel" id="panel-conda" aria-labelledby="tab-conda">
+					<div class="code"><pre><code>mamba install -c conda-forge aqua-core</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+				</div>
+				<div class="tabpanel" role="tabpanel" id="panel-pip" aria-labelledby="tab-pip" hidden>
+					<div class="code"><pre><code>pip install aqua-core
+pip install aqua-diagnostics</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+				</div>
+				<div class="tabpanel" role="tabpanel" id="panel-src" aria-labelledby="tab-src" hidden>
+					<div class="code"><pre><code>git clone git@github.com:DestinE-Climate-DT/AQUA.git
+cd AQUA
+mamba env create -f environment.yml
+mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+				</div>
+				<p class="install-note">AQUA requires Python 3.12 or newer. A container-based deployment is also available — see the <a href="https://aqua.readthedocs.io/en/latest/">documentation</a>.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- Ecosystem -->
+	<section class="section section-alt" id="ecosystem" aria-labelledby="eco-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">How the pieces fit</p>
+				<h2 id="eco-title">The AQUA ecosystem</h2>
+				<p class="section-sub">Model output is described by catalogs, read and processed by the core framework, and analysed by a set of diagnostics.</p>
+			</div>
+
+			<ol class="flow" aria-label="AQUA data flow">
+				<li class="flow-node">
+					<span class="flow-step">1</span>
+					<h3>Climate models</h3>
+					<p>ICON, IFS-NEMO, IFS-FESOM in the ClimateDT, and EC-Earth&nbsp;4 simulations.</p>
+				</li>
+				<li class="flow-node">
+					<span class="flow-step">2</span>
+					<h3>Catalogs</h3>
+					<p>Describe where and how the data live, for ClimateDT and for EC-Earth&nbsp;4.</p>
+					<p class="flow-links"><a href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog">Climate-DT-catalog</a> <a href="https://github.com/mnurisso/ece-catalogue">ece-catalogue</a></p>
+				</li>
+				<li class="flow-node flow-node-main">
+					<span class="flow-step">3</span>
+					<h3>AQUA core</h3>
+					<p>Data access, regridding, averaging and aggregation on large datasets.</p>
+					<p class="flow-links"><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a> <a href="https://pypi.org/project/aqua-core/">aqua-core</a></p>
+				</li>
+				<li class="flow-node">
+					<span class="flow-step">4</span>
+					<h3>AQUA diagnostics</h3>
+					<p>State-of-the-art diagnostics on low-resolution data and frontier diagnostics on high-resolution data.</p>
+					<p class="flow-links"><a href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">AQUA-diagnostics</a> <a href="https://pypi.org/project/aqua-diagnostics/">aqua-diagnostics</a></p>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<!-- Projects -->
+	<section class="section" id="projects" aria-labelledby="projects-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Repositories</p>
+				<h2 id="projects-title">Projects I work on</h2>
+				<p class="section-sub">Commit counts, stars and versions below are fetched live from GitHub and PyPI.</p>
+			</div>
+
+			<div class="toolbar">
+				<div class="filters" role="group" aria-label="Filter projects" data-filter-group="projects">
+					<button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+					<button type="button" class="chip" data-filter="active" aria-pressed="false">Active development</button>
+					<button type="button" class="chip" data-filter="tools" aria-pressed="false">Tools &amp; notes</button>
+					<button type="button" class="chip" data-filter="legacy" aria-pressed="false">Legacy</button>
+				</div>
+			</div>
+
+			<div class="cards cards-3" id="projects-grid">
+
+				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/AQUA" data-pypi="aqua-core" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a></h3>
+						<span class="tag tag-ok">Main developer</span>
+					</header>
+					<p>The model evaluation framework at the heart of the ecosystem: core engine for data access, regridding and aggregation, part of the operational ClimateDT workflow.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA">Repository</a>
+						<a class="btn btn-sm" href="https://aqua.readthedocs.io/en/latest/">Docs</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/aqua-core/">PyPI</a>
+					</p>
+				</article>
+
+				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/AQUA-diagnostics" data-pypi="aqua-diagnostics" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">AQUA-diagnostics</a></h3>
+						<span class="tag">Contributor</span>
+					</header>
+					<p>The diagnostics set of the AQUA framework for high-resolution climate model evaluation: the science that runs on top of the core engine.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">Repository</a>
+						<a class="btn btn-sm" href="https://aqua-diagnostics.readthedocs.io/en/latest/">Docs</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/aqua-diagnostics/">PyPI</a>
+					</p>
+				</article>
+
+				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/Climate-DT-catalog" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog">Climate-DT-catalog</a></h3>
+						<span class="tag tag-ok">Main contributor</span>
+					</header>
+					<p>AQUA catalog for Climate DT: describes the ClimateDT simulations so that AQUA can find and read them.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog">Repository</a>
+					</p>
+				</article>
+
+				<article class="card repo" data-kind="active" data-repo="mnurisso/ece-catalogue" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/mnurisso/ece-catalogue">ece-catalogue</a></h3>
+						<span class="tag tag-ok">Author</span>
+					</header>
+					<p>EC-Earth 4 AQUA catalog: brings EC-Earth simulations into the AQUA framework.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/mnurisso/ece-catalogue">Repository</a>
+						<a class="btn btn-sm" href="https://ec-earth.org/">EC-Earth</a>
+					</p>
+				</article>
+
+				<article class="card repo" data-kind="tools" data-repo="mnurisso/programming_notes" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/mnurisso/programming_notes">programming_notes</a></h3>
+						<span class="tag tag-ok">Author</span>
+					</header>
+					<p>A repository with useful notes about coding in C++, python and notes on utilities like git, conda, cluster usage etc.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/mnurisso/programming_notes">Repository</a>
+					</p>
+				</article>
+
+				<article class="card repo" data-kind="tools" data-repo="mnurisso/ocp-tool">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/mnurisso/ocp-tool">ocp-tool</a></h3>
+						<span class="tag">Fork</span>
+					</header>
+					<p>A tool generating OASIS3-MCT input files, modifying the OpenIFS land sea mask and runoff map to fit the ocean grid.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/mnurisso/ocp-tool">Repository</a>
+					</p>
+				</article>
+
+				<article class="card" data-kind="legacy">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-package"/></svg>
+						<h3><a href="http://plutocode.ph.unito.it/">PLUTO extensions</a></h3>
+						<span class="tag tag-warn">Legacy</span>
+					</header>
+					<p>Ph.D. and Master work on the <strong>PLUTO</strong> MHD code: a current sheet detection algorithm with post-reconnection particle energy distributions, and a module for anisotropic cosmic-ray diffusion.</p>
+					<ul class="repo-meta static">
+						<li>C / C++</li>
+						<li>Computational astrophysics</li>
+					</ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="http://plutocode.ph.unito.it/">PLUTO code</a>
+						<a class="btn btn-sm" href="https://doi.org/10.1093/mnras/stad1348">Paper I</a>
+						<a class="btn btn-sm" href="https://doi.org/10.1093/mnras/stag322">Paper II</a>
+					</p>
+				</article>
+			</div>
+			<p class="empty" id="projects-empty" hidden>No projects match this filter.</p>
+		</div>
+	</section>
+
+	<!-- Stack -->
+	<section class="section section-alt" id="stack" aria-labelledby="stack-title">
+		<div class="container split">
+			<div class="section-head">
+				<p class="eyebrow">Tools of the trade</p>
+				<h2 id="stack-title">Stack</h2>
+			</div>
+			<div class="reveal">
+				<div class="stack">
+					<div><h3>Languages</h3><ul class="chips"><li>Python</li><li>C++</li><li>Shell</li><li>Jupyter</li></ul></div>
+					<div><h3>Data &amp; formats</h3><ul class="chips"><li>NetCDF</li><li>GRIB</li><li>Zarr</li><li>FDB</li><li>CDO</li></ul></div>
+					<div><h3>Workflow</h3><ul class="chips"><li>git</li><li>conda / mamba</li><li>Containers</li><li>HPC clusters</li><li>Parallel programming</li></ul></div>
+					<div><h3>Models &amp; codes</h3><ul class="chips"><li>EC-Earth 4</li><li>IFS-NEMO</li><li>IFS-FESOM</li><li>ICON</li><li>PLUTO</li></ul></div>
+				</div>
+				<p class="note">Want to get involved? AQUA welcomes new contributors — see the
+				<a href="https://github.com/DestinE-Climate-DT/AQUA/blob/main/CONTRIBUTING.md">Guidelines for Contributors</a>,
+				or <a href="mailto:matteo.nurisso@polito.it">get in touch</a>.</p>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="site-footer">
+	<div class="container footer-inner">
+		<p>© <span id="year">2026</span> Matteo Nurisso</p>
+		<p><a href="#top">Back to top ↑</a></p>
+	</div>
+</footer>
+
+<!-- Command palette -->
+<dialog class="palette" id="palette" aria-label="Command menu">
+	<form method="dialog" class="palette-box">
+		<div class="palette-input">
+			<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+			<input type="text" id="palette-q" placeholder="Jump to a section, or run a command…" autocomplete="off" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="palette-list">
+			<kbd>esc</kbd>
+		</div>
+		<ul id="palette-list" role="listbox" aria-label="Commands"></ul>
+		<p class="palette-foot"><kbd>↑</kbd><kbd>↓</kbd> navigate · <kbd>↵</kbd> select</p>
+	</form>
+</dialog>
+
+<!-- Figure lightbox -->
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged figure">
+	<form method="dialog"><button class="icon-btn lightbox-close" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></form>
+	<img id="lightbox-img" alt="">
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.hero-hint{display:none}</style></noscript>
+</body>
+</html>

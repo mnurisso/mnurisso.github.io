@@ -1,276 +1,663 @@
-<!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Matteo Nurisso</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="I'm Matteo Nurisso, a Researcher at Politecnico di Torino since December 2025.
-		I hold a Ph.D. in Physics from SISSA.
-		I work on climate science in the Destination Earth project and the EPOCHAL paleoclimate project, analyzing high-resolution climate simulations and implementing lower resolution EC-Earth model configurations.">
-		<meta name="keywords" content="Matteo, Nurisso, Matteo Nurisso, Magnetic Reconnection, magnetic,
-		reconnection, SISSA, PLUTO, Computational, Science, Astrophysicist, Italy, Torino,
-		Turin, simulation, Trieste, Climate, Destination, Earth, DestinE, CNR, Isac, CNR-ISAC, Polito, Politecnico,
-		teleconnections, NAO, ENSO, elNino, laNina, data science, data engineering, paleoclimate,
-		EC-Earth, EPOCHAL, outreach, Silviadizenzero, Ginger Fest">
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Matteo Nurisso — Climate scientist &amp; scientific developer</title>
+	<meta name="author" content="Matteo Nurisso">
+	<meta name="description" content="Matteo Nurisso, Researcher at Politecnico di Torino and Ph.D. in Physics (SISSA). Climate science in the Destination Earth and EPOCHAL projects: high-resolution climate simulations, the AQUA quality-assessment framework and EC-Earth paleoclimate modelling.">
+	<meta name="theme-color" content="#002b36">
+	<link rel="canonical" href="https://mnurisso.github.io/">
+	<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Matteo Nurisso — Climate scientist & scientific developer">
+	<meta property="og:description" content="Climate modelling, scientific software and science communication. Researcher at Politecnico di Torino.">
+	<meta property="og:url" content="https://mnurisso.github.io/">
 
-				<!-- Header -->
-					<header id="header" class="alt">
-						
-						<h1><a href="index.html">Matteo Nurisso</a>
-						<!--&emsp;<a href="scientific_interests.html">Scientific Interests</a>
-						&emsp;<a href="workshops_conferences.html">Workshops and Conferences</a>
-						&emsp;<a href="#outreach">Outreach</a>-->
-						</h1>
-						
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
-					</header>
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Matteo Nurisso",
+		"url": "https://mnurisso.github.io/",
+		"jobTitle": "Researcher",
+		"worksFor": { "@type": "CollegeOrUniversity", "name": "Politecnico di Torino", "url": "https://www.polito.it/" },
+		"alumniOf": [
+			{ "@type": "CollegeOrUniversity", "name": "International School for Advanced Studies (SISSA)" },
+			{ "@type": "CollegeOrUniversity", "name": "University of Turin" }
+		],
+		"email": "mailto:matteo.nurisso@polito.it",
+		"sameAs": ["https://github.com/mnurisso/", "https://www.linkedin.com/in/matteo-nurisso/"],
+		"knowsAbout": ["Climate science", "Destination Earth", "Climate Digital Twin", "Paleoclimate", "EC-Earth", "Teleconnections", "Computational astrophysics", "Magnetic reconnection", "Magnetohydrodynamics", "Scientific software", "Science communication"]
+	}
+	</script>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="scientific_interests.html">Scientific Interests</a></li>
-								<li><a href="publications.html">Publications</a></li>
-								<li><a href="workshops_conferences.html">Workshops and Conferences</a></li>
-								<li><a href="outreach.html">Outreach</a></li>
-							</ul>
-							<a href="#" class="close">Close</a>
-						</div>
-					</nav>
+	<script>
+		// Runs before first paint: dark theme by default (Solarized), remembered choice wins.
+		try {
+			var d = document.documentElement;
+			d.classList.add('js');
+			var t = localStorage.getItem('theme');
+			d.dataset.theme = (t === 'light' || t === 'dark') ? t : 'dark';
+		} catch (e) { document.documentElement.dataset.theme = 'dark'; document.documentElement.classList.add('js'); }
+		// If the main script fails to load, fall back to the no-JS layout.
+		setTimeout(function () { if (!window.__mnReady) document.documentElement.classList.remove('js'); }, 3000);
+	</script>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<script defer src="assets/js/flow.js"></script>
+	<script defer src="assets/js/github.js"></script>
+	<script defer src="assets/js/main.js"></script>
+</head>
+<body>
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2>Matteo Nurisso</h2>
-							<p>Researcher at Politecnico di Torino</p>
-						</div>
-					</section>
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+	<defs>
+		<symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+		<symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+		<symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+		<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></symbol>
+		<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+		<symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+		<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></symbol>
+		<symbol id="i-package" viewBox="0 0 24 24"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></symbol>
+		<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+		<symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+		<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+		<symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+		<symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></symbol>
+		<symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+		<symbol id="i-cmd" viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></symbol>
+		<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+		<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+	</defs>
+</svg>
 
-				<!-- Wrapper -->
-					<section id="wrapper">
+<a class="skip-link" href="#main">Skip to content</a>
 
-						<!-- One - About me -->
-							<section id="one" class="wrapper spotlight style1">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/matteo_nurisso_color.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">About me</h2>
-										<p>Welcome to my homepage!
-										<br>
-											I'm <strong>Matteo Nurisso</strong>, a Researcher at <a href="https://www.polito.it/">Politecnico di Torino</a> since December 2025.
-										<br>
-											I hold a Ph.D. in Physics from SISSA (Trieste).
-										<br>
-											I work in the field of climate science.
-											I am part of the <strong><a href="https://destination-earth.eu">Destination Earth project</a></strong>,
-											where I'm involved in the <strong><a href="https://destine.ecmwf.int/climate-change-adaptation-digital-twin-climate-dt/">Climate Change Adaptation Digital Twin</a></strong>, analyzing high-resolution (5km) climate models
-											(IFS-NEMO, IFS-FESOM and ICON) and developing the framework and diagnostics for quality assessment of climate simulations
-											(<strong><a href="https://destine.ecmwf.int/news/aqua-application-quality-assessment-climate-dt-destination-earth/">AQUA</a></strong> code).
-											<br>
-											I'm also involved in the PRIN project <strong>EPOCHAL</strong>, which aims to extend 
-											<strong><a href="https://ec-earth.org/">EC-Earth 4</a></strong> for paleoclimate simulations.
-										<br>
-										Previously I worked on Computational Astrophysics, Plasma Physics, and Magnetohydrodynamics (MHD).
-									</div>
-								</div>
-							</section>
+<!-- Header -->
+<header class="site-header" id="top">
+	<div class="container header-inner">
+		<a class="brand" href="#top" aria-label="Matteo Nurisso — back to top">
+			<span class="brand-mark" aria-hidden="true">MN</span>
+			<span class="brand-name">Matteo Nurisso</span>
+		</a>
 
-						<!-- Two - Scientific interests -->
-							<section id="two" class="wrapper alt spotlight style2">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/precipitation.png" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Scientific interests</h2>
-										I'm currently involved in the quality assessment and online monitoring of climate simulations in the
-										Climate Change Adaptation Digital Twin, part of the Destination Earth project.
-										In this context, I am working on the development of the <strong><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a></strong> code,
-										both in the development of the framework and in the implementation of diagnostics
-										for the quality assessment of climate simulations.
-										<br>
-										I'm also involved in the PRIN project <strong>EPOCHAL</strong> (Earth system modeling of PaleOClimatic HyperthermALs),
-										with the goal of using <a href="https://ec-earth.org/">EC-Earth</a> model to study paleoclimate,
-										extending the EC-Earth4 version to include lower resolution configurations and
-										the required boundary, domain and initial conditions for the paleoclimate simulations.
-										<br>
-										You can find more information in the <strong><a href="scientific_interests.html">Scientific Interests</a></strong> section.
-										<hr> 
-										My doctoral research was focused in astrophysics, specifically on the implementation of the
-										acceleration of non-thermal component of particles due to 
-										magnetic reconnection in magnetohydrodynamical (MHD) simulations. I implemented this phenomenon in the MHD code
-										<a href="http://plutocode.ph.unito.it/">PLUTO</a>.
-										You can find more information in the <a href="astrophysics.html">Astrophysics</a> section.	
+		<nav class="nav" id="nav" aria-label="Primary">
+			<a href="#research">Research</a>
+			<a href="#publications">Publications</a>
+			<a href="software.html">Software</a>
+			<a href="#career">Career</a>
+			<a href="#events">Talks &amp; events</a>
+			<a href="#outreach">Outreach</a>
+			<a href="#contact">Contact</a>
+		</nav>
 
-										<hr>
+		<div class="header-actions">
+			<button class="icon-btn kbd-btn" type="button" id="palette-open" aria-label="Open command menu" title="Command menu (Ctrl/⌘ K)">
+				<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+				<kbd>⌘K</kbd>
+			</button>
+			<button class="icon-btn" type="button" id="theme-toggle" aria-label="Toggle colour theme" title="Toggle theme">
+				<svg class="icon icon-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+				<svg class="icon icon-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+			</button>
+			<button class="icon-btn nav-toggle" type="button" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav">
+				<svg class="icon icon-open" aria-hidden="true"><use href="#i-menu"/></svg>
+				<svg class="icon icon-close" aria-hidden="true"><use href="#i-close"/></svg>
+			</button>
+		</div>
+	</div>
+	<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+</header>
 
-										<a href="scientific_interests.html" class="special">Learn more</a>
-										<a href="publications.html" class="special">Publications</a>
-										<a href="workshops_conferences.html" class="special">Conferences and Workshops</a>
-									</div>
-								</div>
-							</section>
+<main id="main">
 
-						<!-- Three - Education -->
-							<section id="three" class="wrapper spotlight style3">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/sissa.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Education and work</h2>
-										<div class="table-wrapper">
-											<table>
-												<tbody>
-													<tr>
-															<td> 2025 - present </td>
-															<td> <strong>Researcher</strong>
-															<br> Politecnico di Torino</td>
-															<td> Turin (Italy)</td>
-														<tr>
-															<td> 2024 - 2025 </td>
-														<td> <strong>PostDoc</strong>
-														<br> Consiglio Nazionale delle Ricerche (CNR-ISAC)</td>
-														<td> Turin (Italy)</td>
-													<tr>
-														<td> 2022 - 2024 </td>
-														<td> <strong>Scientific programmer in Climate Science</strong>
-														<br> Consiglio Nazionale delle Ricerche (CNR-ISAC)</td>
-														<td> Turin (Italy)</td>
-													</tr>
-													<tr>
-														<td> 2018 - 2022 </td>
-														<td> <strong>Ph.D. in Astrophysics and Cosmology</strong>
-														<br> International School for Advanced Studies (SISSA)</td>
-														<td> Trieste (Italy)</td>
-													</tr>
-													<tr>
-														<td> 2014 - 2018</td>
-														<td> <strong>MS Astrophysics and Theoretical Physics</strong>
-														<br> University of Turin</td>
-														<td> Turin (Italy)</td>
-													</tr>
-													<tr>
-														<td> 2011 - 2014</td>
-														<td> <strong>BS Physics</strong>
-														 University of Turin</td>
-														<td> Turin (Italy)</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="row">
-											<div class="col-4 col-12-medium">
-												<a href="https://github.com/mnurisso/programming_notes" class="button primary icon solid fa-file">Code notes</a>
-											</div>
-											<div class="col-8 col-12-medium">
-												a repository with useful notes about coding in C++, python
-										        and notes on utilities like git, conda, cluster usage etc.
-											</div>
-										</div>
-									</div>
-								</div>
-							</section>
+	<!-- Hero -->
+	<section class="hero" id="about" aria-labelledby="hero-title">
+		<canvas class="hero-canvas" id="flow-canvas" aria-hidden="true"></canvas>
+		<div class="container hero-grid">
+			<div class="hero-copy">
+				<p class="eyebrow"><span class="dot" aria-hidden="true"></span><span>Researcher at <a href="https://www.polito.it/">Politecnico di Torino</a></span></p>
+				<h1 id="hero-title">Matteo <span class="grad">Nurisso</span></h1>
+				<p class="lead">Climate scientist and scientific software developer, making sense of
+				<strong>kilometre-scale climate simulations</strong> for the <a href="https://destination-earth.eu">Destination Earth</a> project.
+				Previously: magnetic reconnection and plasma astrophysics.</p>
 
-						<!-- Four -->
-							<section id="four" class="wrapper alt spotlight style4">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/outreach.jpeg" alt="" /></a>
-									<div class="content">
-										<h2 class="major"><a id="outreach">Outreach</a></h2>
-										<p>Since my MS I started doing <strong>outreach</strong> as a volunteer in the
-										<a href="https://ai-sf.it/">AISF</a> association and as a collaborator in the University of Turin.
-										<br> In SISSA I continued my outreach activities and I had, thanks to the
-										<a href="https://medialab.sissa.it/">SISSA Medialab</a>, the possibility
-										to take introductory classes in <strong>Science Communication</strong>. 
-										</p>
-										<a href="outreach.html" class="special">Learn more</a>
-									</div>
-								</div>
-							</section>
-							
-						<!-- Five -->
-							<section id="five" class="wrapper spotlight style5">
-								<div class="inner">
-									<a href="#" class="image"><img src="images/sdz.jpg" alt="" /></a>
-									<div class="content">
-										<h2 class="major">Activism and Hobbies</h2>
-										<p>I've always felt the need to be active part of the society, with my work and during my free time.
-										<br>I started being a member of the <strong>Scout association</strong> since 2000. From 2013 to 2015 I have been Scoutmaster,
-										being responsible for the activities and educations of kids in the primary school.
+				<div class="hero-cta">
+					<a class="btn btn-primary" href="#research">Explore my research</a>
+					<a class="btn" href="#publications">Publications</a>
+				</div>
 
-										<h3 class="major">Silviadizenzero</h3>
-										
-										<br>Since 2013 I'm mostly involved in <strong>Silviadizenzero</strong>, an association whose primary goal are
-										<strong>Climate Science popularization</strong> and spreading of <strong>Vegetarian Culture</strong>.
-										Our main activities are the organization of workshops, meetings with experts, movie projections and collaborations with other
-										associations in Italy. The main goal is to spread scientific culture about climate change and what can be done by individuals
-										both with everyday decisions and lobbying.
-										<br>Since 2018 I've been <strong>Vice-president</strong> of this association.
-										<br>Since 2019, a festival dedicated to all the different arts, called 
-										<a href="https://www.instagram.com/gingerfest_/">Ginger Fest</a> is organized by Silviadizenzero.
-										<br> Since 2021 we collaborate with a regional radio,
-										<a href="https://www.radiofrejus.it/category/pipponedi/">Radio Dora</a>, creating and presenting a weekly live content on Climate
-										change awareness.
-										<br>In 2023 the association has celebrated its 10th anniversary.
-										<br>Since 2024 I'm <strong>President</strong> of this association.
-										</p>
-										<a href="http://www.silviadizenzero.it" class="special">Silviadizenzero website</a>
-										<a href="https://www.instagram.com/silviadizenzero/" class="special">Silviadizenzero Instagram</a>
-										<a href="https://www.instagram.com/gingerfest_/" class="special">Ginger Fest Instagram</a>
-									</div>
-								</div>
-							</section>
-					</section>
-
-				<!-- Footer -->
-					<section id="footer">
-						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<div class="row">
-								<div class="col-6 col-12-medium">
-									<ul class="contact">
-										<li class="icon solid fa-university">
-											Politecnico di Torino<br />
-											Turin, ITALY
-										</li>
-									</ul>
-								</div>
-								<div class="col-6 col-12-medium">
-									<ul class="contact">
-												<li class="icon solid fa-envelope"><a href="mailto:matteo.nurisso@polito.it">matteo.nurisso@polito.it</a></li>
-										<li class="icon brands fa-github"><a href="https://github.com/mnurisso/">Github</a></li>
-										<li class="icon brands fa-linkedin"><a href="https://www.linkedin.com/in/matteo-nurisso/">Linkedin</a></li>
-									</ul>
-								</div>
-							</div>
-							<ul class="copyright">
-								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-							</ul>
-						</div>
-					</section>
-
+				<ul class="social" aria-label="Profiles">
+					<li><a href="https://github.com/mnurisso/" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span></a></li>
+					<li><a href="https://www.linkedin.com/in/matteo-nurisso/" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+					<li><a href="mailto:matteo.nurisso@polito.it" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a></li>
+				</ul>
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<figure class="portrait reveal">
+				<img src="images/portrait.webp" width="900" height="900" alt="Portrait of Matteo Nurisso smiling outdoors" fetchpriority="high">
+				<figcaption class="portrait-tag"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Turin, Italy</figcaption>
+			</figure>
+		</div>
 
-	</body>
+		<p class="hero-hint" aria-hidden="true">Move your pointer over the field — it is a small flow simulation.</p>
+	</section>
+
+	<!-- About -->
+	<section class="section" id="bio" aria-labelledby="bio-title">
+		<div class="container split">
+			<div class="section-head">
+				<p class="eyebrow">About me</p>
+				<h2 id="bio-title">Welcome to my homepage</h2>
+			</div>
+			<div class="prose reveal">
+				<p>I'm <strong>Matteo Nurisso</strong>, a Researcher at <a href="https://www.polito.it/">Politecnico di Torino</a> since December 2025.
+				I hold a Ph.D. in Physics from SISSA (Trieste), and I work in the field of climate science.</p>
+
+				<p>I am part of the <strong><a href="https://destination-earth.eu">Destination Earth project</a></strong>,
+				where I'm involved in the <strong><a href="https://destine.ecmwf.int/climate-change-adaptation-digital-twin-climate-dt/">Climate Change Adaptation Digital Twin</a></strong>,
+				analyzing high-resolution (5&nbsp;km) climate models (IFS-NEMO, IFS-FESOM and ICON) and developing the framework and diagnostics for quality assessment of climate simulations
+				(<strong><a href="https://destine.ecmwf.int/news/aqua-application-quality-assessment-climate-dt-destination-earth/">AQUA</a></strong> code).</p>
+
+				<p>I'm also involved in the PRIN project <strong>EPOCHAL</strong>, which aims to extend
+				<strong><a href="https://ec-earth.org/">EC-Earth 4</a></strong> for paleoclimate simulations.</p>
+
+				<p>Previously I worked on Computational Astrophysics, Plasma Physics, and Magnetohydrodynamics (MHD).</p>
+
+				<ul class="chips" aria-label="Topics">
+					<li>Climate modelling</li><li>Digital twins</li><li>Paleoclimate</li><li>EC-Earth</li>
+					<li>Python</li><li>HPC</li><li>MHD</li><li>Science communication</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="container">
+			<dl class="stats reveal" id="stats" aria-label="At a glance">
+				<div><dt>Peer-reviewed &amp; submitted papers</dt><dd data-count="pubs">7</dd></div>
+				<div><dt>Conferences &amp; hackathons</dt><dd data-count="conference">21</dd></div>
+				<div><dt>Talks given</dt><dd data-count="talk">4</dd></div>
+				<div><dt>Years in research</dt><dd data-count="years" data-since="2018">8</dd></div>
+			</dl>
+		</div>
+	</section>
+
+	<!-- Research -->
+	<section class="section section-alt" id="research" aria-labelledby="research-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Scientific interests</p>
+				<h2 id="research-title">Research</h2>
+				<p class="section-sub">From plasma physics around black holes to the climate of the Earth — the common thread is
+				large simulations, and making them trustworthy.</p>
+			</div>
+
+			<div class="tabs" data-tabs>
+				<div class="tablist" role="tablist" aria-label="Research areas">
+					<button role="tab" id="tab-climate" aria-controls="panel-climate" aria-selected="true">Climate science <span class="pill pill-now">current</span></button>
+					<button role="tab" id="tab-astro" aria-controls="panel-astro" aria-selected="false" tabindex="-1">Astrophysics <span class="pill">legacy</span></button>
+				</div>
+
+				<!-- Climate -->
+				<div class="tabpanel" role="tabpanel" id="panel-climate" aria-labelledby="tab-climate">
+					<p class="prose-lead">Currently I'm a Researcher at <a href="https://www.polito.it/">Politecnico di Torino</a> since December 2025,
+					working in Climate Science with the <strong>Climate Change Adaptation Digital Twin</strong> in the <strong>Destination Earth</strong> project and
+					the <strong>EPOCHAL</strong> project for paleoclimate modeling.</p>
+
+					<div class="feature">
+						<div class="feature-text">
+							<h3>AQUA code for the ClimateDT</h3>
+							<p>The Application for QUality Assessment (AQUA) is a model evaluation framework designed for running diagnostics on high-resolution climate models,
+							specifically for Climate DT climate simulations being part of Destination Earth activity.
+							The package provides a flexible and efficient Python&nbsp;3 framework to process and analyze large volumes of climate data.
+							With its modular design, AQUA offers seamless integration of core functions and a wide range of diagnostic tools that can be run in parallel.</p>
+							<p>I am one of the main developers of AQUA, and I am responsible for the implementation of the core framework and the development of new diagnostics.
+							The code is already public and available on <a href="https://github.com/DestinE-Climate-DT/AQUA">GitHub</a> or <a href="https://pypi.org/project/aqua-core/">PyPI</a>.</p>
+							<p>The code, as represented in the figure, is already part of the operational workflow of the ClimateDT.
+							Its usage is not limited to the ClimateDT, but offers a flexible framework that can be used to run diagnostics on any climate model.</p>
+							<p class="actions">
+								<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+								<a class="btn btn-sm" href="https://pypi.org/project/aqua-core/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI</a>
+								<a class="btn btn-sm" href="https://doi.org/10.5194/gmd-19-7725-2026"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Paper</a>
+								<a class="btn btn-sm btn-primary" href="software.html">More software <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+							</p>
+						</div>
+						<figure class="feature-fig zoomable">
+							<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: AQUA role in the ClimateDT workflow">
+								<img src="images/aqua.webp" width="745" height="997" loading="lazy" alt="Diagram of the ClimateDT end-to-end workflow: climate models (ICON, IFS-NEMO, IFS-FESOM) produce a Generic State Vector in the Field DataBase, which AQUA turns into a low-resolution archive with state-of-the-art diagnostics and frontier diagnostics on high-resolution data.">
+							</button>
+							<figcaption>AQUA role in the ClimateDT workflow. Image from the <a href="https://destine.ecmwf.int/news/aqua-application-quality-assessment-climate-dt-destination-earth/">DestinE-ECMWF</a> website.</figcaption>
+						</figure>
+					</div>
+
+					<div class="feature feature-flip">
+						<div class="feature-text">
+							<h3>EPOCHAL</h3>
+							<p><strong>EPOCHAL</strong> (Earth system modeling of PaleOClimatic HyperthermALs) is a PRIN project
+							that aims to study the <strong>paleoclimate</strong> with the use of Earth system models.
+							In particular, I'm working on the implementation of lower resolutions in the <strong>EC-Earth4</strong> model,
+							in order to be able to run long simulations of the paleoclimate.
+							This requires appropriate modifications of the boundary, initial, and forcing conditions.</p>
+							<p>The low resolution version of the model will give to the paleoclimatic community a valuable tool
+							to run simulation with a well tested and validated model, that will guarantee a continuous support
+							and development in the future.</p>
+							<p class="actions">
+								<a class="btn btn-sm" href="https://ec-earth.org/">EC-Earth consortium <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+							</p>
+						</div>
+						<figure class="feature-fig">
+							<img src="images/precipitation.webp" width="1250" height="628" loading="lazy" alt="Global map of precipitation in a high-resolution climate simulation, with a strong tropical rain band shown in teal over brown dry regions.">
+							<figcaption>Global precipitation field from a high-resolution climate simulation.</figcaption>
+						</figure>
+					</div>
+				</div>
+
+				<!-- Astrophysics -->
+				<div class="tabpanel" role="tabpanel" id="panel-astro" aria-labelledby="tab-astro" hidden>
+					<p class="notice"><strong>Attention:</strong> this is not anymore my main field of research, but I keep this section for historical reasons.
+					See <a href="#panel-climate" data-open-tab="climate">Climate science</a> for my current research.</p>
+
+					<h3>Researcher in astrophysics</h3>
+					<p class="prose-lead">My research during the PhD lied in the field of <strong>high-energy astrophysics</strong>
+					and its connection with <strong>plasma physics</strong>, having the primary goal of investigating
+					high-energy emissions from extragalactic sources through (relativistic)
+					magneto-hydrodynamical simulations.</p>
+					<p class="prose-lead">The research aims at studying the role of particles acceleration due to
+					<strong>magnetic reconnection</strong> in astrophysical sources, through the implementation
+					of a <strong>current sheet detection algorithm</strong> and the
+					<strong>calculation of post-reconnection particles energy distribution</strong> based on the fluid
+					quantities surrounding the acceleration site and the results of Particles-in-a-cell
+					simulations reported in the literature. I implemented this in the MHD code <a href="http://plutocode.ph.unito.it/">PLUTO</a>.</p>
+
+					<div class="cards cards-2">
+						<article class="card">
+							<h4>Magnetic Reconnection</h4>
+							<p><strong>Magnetic reconnection</strong> is a plasma process that dissipates the energy stored in
+							magnetic field into plasma kinetic energy, through a rearrangement of magnetic field topology,
+							resulting in <strong>particles</strong> heating and <strong>acceleration</strong>.</p>
+							<p>It is thought to play an important role in numerous astrophysical sources like gamma-ray bursts
+							and jets from active galactic nuclei (AGN). Magnetic reconnection and shock acceleration are usually
+							invoked among the possible mechanisms to produce particle non-thermal spectra.</p>
+						</article>
+						<article class="card">
+							<h4>Cosmic Rays</h4>
+							<p><strong>Cosmic Rays</strong> are the radiations coming from outside the Earth’s atmosphere.
+							Their motion in the galaxy is described by the transport equation.</p>
+							<p>In my Master thesis I developed a module of the
+							<strong><a href="http://plutocode.ph.unito.it/">PLUTO</a></strong>
+							code to study the effects of an anisotropic
+							spatial diffusion coefficient and compared the results with observations of progressive hardening
+							of the proton slope at low galactic radii in the CRs spectrum as showed by Fermi-LAT data.</p>
+						</article>
+					</div>
+					<p class="actions"><a class="btn btn-sm" href="#publications" data-filter-link="astro">Astrophysics publications</a></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Publications -->
+	<section class="section" id="publications" aria-labelledby="pubs-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Papers</p>
+				<h2 id="pubs-title">Publications</h2>
+			</div>
+
+			<div class="toolbar">
+				<div class="filters" role="group" aria-label="Filter publications by field" data-filter-group="pubs">
+					<button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+					<button type="button" class="chip" data-filter="climate" aria-pressed="false">Climate</button>
+					<button type="button" class="chip" data-filter="astro" aria-pressed="false">Astrophysics</button>
+				</div>
+				<label class="search">
+					<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+					<span class="sr-only">Search publications</span>
+					<input type="search" id="pub-search" placeholder="Search title, author, journal…" autocomplete="off">
+				</label>
+			</div>
+
+			<ol class="pubs" id="pubs">
+				<li class="pub reveal" data-topic="climate" data-year="2026">
+					<div class="pub-meta"><span class="tag tag-warn">Under review</span><span class="pub-year">2026</span></div>
+					<h3 class="pub-title">Observation-based evaluation of the Destination Earth climate change adaptation digital twin simulations using OBSALL v1.0</h3>
+					<p class="pub-authors">Järvinen, H., Räisänen, J., Tuppi, L., Bouvier, C., Sanchez-Benitez, A., Tyree, J., Toropainen, A., Davini, P., Doblas-Reyes, F., Jung, T., Klocke, D., Kontkanen, J., Milinski, S., <strong>Matteo Nurisso</strong>, Kesari Pradhan, H., and Sandu, I</p>
+					<p class="pub-venue"><span class="journal">Geoscientific Model Development</span> · under review</p>
+					<p class="pub-links"><a href="https://doi.org/10.5194/egusphere-2026-3364">DOI: 10.5194/egusphere-2026-3364 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+				<li class="pub reveal" data-topic="climate" data-year="2026">
+					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">2026-08-20</span></div>
+					<h3 class="pub-title">AQUA v1.0.0: The Application for QUality Assessment for the Climate Change Adaptation Digital Twin – the core engine</h3>
+					<p class="pub-authors"><strong>Matteo Nurisso</strong>, Silvia Caprioli, Paolo Davini, Jost von Hardenberg, Natalia Nazarova, Supriyo Ghosh, Paolo Ghinassi, Marco Cadau, Emanuele Tovazzi, Nikolay Koldunov, Maqsood Mubarak Rajput, Bruno Kinoshita</p>
+					<p class="pub-venue"><span class="journal">Geoscientific Model Development</span> · 2026-08-20</p>
+					<p class="pub-links"><a href="https://doi.org/10.5194/gmd-19-7725-2026">DOI: 10.5194/gmd-19-7725-2026 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+				<li class="pub reveal" data-topic="climate" data-year="2026">
+					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">2026-08-17</span></div>
+					<h3 class="pub-title">Regional and weather-type modulation of global warming–driven intensification of Italian precipitation extremes from multi-year storyline simulations</h3>
+					<p class="pub-authors">Marco Burderi; Salvatore Pascale; Cristina Iacomino; Federico Grazzini; <strong>Matteo Nurisso</strong>; Amal John; Sebastian Beyer; and Giuseppe Zappa</p>
+					<p class="pub-venue"><span class="journal">Environmental Research Letters</span> · 2026-08-17</p>
+					<p class="pub-links"><a href="https://doi.org/10.1088/1748-9326/ae8fea">DOI: 10.1088/1748-9326/ae8fea <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+				<li class="pub reveal" data-topic="climate" data-year="2026">
+					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">2026-05-10</span></div>
+					<h3 class="pub-title">Global Kilometer-Scale Climate Storylines Using Spectral Nudging</h3>
+					<p class="pub-authors">Amal John; et al.</p>
+					<p class="pub-venue"><span class="journal">JAMES</span> · 2026-05-10</p>
+					<p class="pub-links"><a href="https://doi.org/10.1029/2025MS005326">DOI: 10.1029/2025MS005326 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+				<li class="pub reveal" data-topic="climate" data-year="2026">
+					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">2026-04-14</span></div>
+					<h3 class="pub-title">The Destination Earth digital twin for climate change adaptation</h3>
+					<p class="pub-authors">Francisco J. Doblas-Reyes; et al.</p>
+					<p class="pub-venue"><span class="journal">Geoscientific Model Development</span> · 2026-04-14</p>
+					<p class="pub-links"><a href="https://doi.org/10.5194/gmd-19-2821-2026">DOI: 10.5194/gmd-19-2821-2026 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+				<li class="pub reveal" data-topic="astro" data-year="2026">
+					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">2026-02-18</span></div>
+					<h3 class="pub-title">Particles acceleration with Magnetic Reconnection in large scale RMHD simulations: II. Particle Spectra</h3>
+					<p class="pub-authors">Alessio Suriano; <strong>Matteo Nurisso</strong>; Annalisa Celotti; Andrea Mignone; Gianluigi Bodo</p>
+					<p class="pub-venue"><span class="journal">Monthly Notices of the Royal Astronomical Society</span> · 2026-02-18</p>
+					<p class="pub-links"><a href="https://doi.org/10.1093/mnras/stag322">DOI: 10.1093/mnras/stag322 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+				<li class="pub reveal" data-topic="astro" data-year="2023">
+					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">2023-05-08</span></div>
+					<h3 class="pub-title">Particles acceleration with magnetic reconnection in large scale RMHD simulations: I. Current sheet identification and characterization</h3>
+					<p class="pub-authors"><strong>Matteo Nurisso</strong>; Annalisa Celotti; Andrea Mignone; Gianluigi Bodo</p>
+					<p class="pub-venue"><span class="journal">Monthly Notices of the Royal Astronomical Society</span> · 2023-05-08</p>
+					<p class="pub-links"><a href="https://doi.org/10.1093/mnras/stad1348">DOI: 10.1093/mnras/stad1348 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+				</li>
+			</ol>
+			<p class="empty" id="pubs-empty" hidden>No publications match your filters.</p>
+			<p class="note">Astrophysics entries are legacy publications in the field of astrophysics, plasma physics, and magnetohydrodynamics (MHD).</p>
+		</div>
+	</section>
+
+	<!-- Code -->
+	<section class="section section-alt" id="code" aria-labelledby="code-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Open source</p>
+				<h2 id="code-title">Scientific software</h2>
+				<p class="section-sub">Software is a big part of how I do science. Repository stats are fetched live from GitHub.</p>
+			</div>
+
+			<div class="cards cards-3">
+				<article class="card repo" data-repo="DestinE-Climate-DT/AQUA" data-pypi="aqua-core" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a></h3>
+					</header>
+					<p>Application for QUality Assessment — a modular Python framework for running diagnostics on high-resolution climate models, part of the operational ClimateDT workflow.</p>
+					<ul class="repo-meta"></ul>
+				</article>
+				<article class="card repo" data-repo="DestinE-Climate-DT/AQUA-diagnostics" data-pypi="aqua-diagnostics" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">AQUA-diagnostics</a></h3>
+					</header>
+					<p>The diagnostics set of the AQUA framework for high-resolution climate model evaluation.</p>
+					<ul class="repo-meta"></ul>
+				</article>
+				<article class="card repo" data-repo="mnurisso/programming_notes" data-me="mnurisso">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/mnurisso/programming_notes">programming_notes</a></h3>
+					</header>
+					<p>Code notes: useful notes about coding in C++, python and notes on utilities like git, conda, cluster usage etc.</p>
+					<ul class="repo-meta"></ul>
+				</article>
+			</div>
+			<p class="actions center"><a class="btn btn-primary" href="software.html">All the software I develop <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+		</div>
+	</section>
+
+	<!-- Career -->
+	<section class="section" id="career" aria-labelledby="career-title">
+		<div class="container split">
+			<div class="section-head sticky">
+				<p class="eyebrow">Education and work</p>
+				<h2 id="career-title">Career</h2>
+				<figure class="side-fig">
+					<img src="images/sissa.webp" width="900" height="900" loading="lazy" alt="Sunset over the Gulf of Trieste, seen from the hills above the city">
+					<figcaption>Trieste, where I did my Ph.D.</figcaption>
+				</figure>
+			</div>
+
+			<ol class="timeline">
+				<li class="reveal now">
+					<span class="tl-date">2025 – present</span>
+					<h3>Researcher</h3>
+					<p class="tl-org">Politecnico di Torino</p>
+					<p class="tl-place">Turin (Italy)</p>
+				</li>
+				<li class="reveal">
+					<span class="tl-date">2024 – 2025</span>
+					<h3>PostDoc</h3>
+					<p class="tl-org">Consiglio Nazionale delle Ricerche (CNR-ISAC)</p>
+					<p class="tl-place">Turin (Italy)</p>
+				</li>
+				<li class="reveal">
+					<span class="tl-date">2022 – 2024</span>
+					<h3>Scientific programmer in Climate Science</h3>
+					<p class="tl-org">Consiglio Nazionale delle Ricerche (CNR-ISAC)</p>
+					<p class="tl-place">Turin (Italy)</p>
+				</li>
+				<li class="reveal">
+					<span class="tl-date">2018 – 2022</span>
+					<h3>Ph.D. in Astrophysics and Cosmology</h3>
+					<p class="tl-org">International School for Advanced Studies (SISSA)</p>
+					<p class="tl-place">Trieste (Italy)</p>
+				</li>
+				<li class="reveal">
+					<span class="tl-date">2014 – 2018</span>
+					<h3>MS Astrophysics and Theoretical Physics</h3>
+					<p class="tl-org">University of Turin</p>
+					<p class="tl-place">Turin (Italy)</p>
+				</li>
+				<li class="reveal">
+					<span class="tl-date">2011 – 2014</span>
+					<h3>BS Physics</h3>
+					<p class="tl-org">University of Turin</p>
+					<p class="tl-place">Turin (Italy)</p>
+				</li>
+			</ol>
+		</div>
+	</section>
+
+	<!-- Events -->
+	<section class="section section-alt" id="events" aria-labelledby="events-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Workshops and Conferences</p>
+				<h2 id="events-title">Talks &amp; events</h2>
+			</div>
+
+			<div class="toolbar">
+				<div class="filters" role="group" aria-label="Filter events by type" data-filter-group="events">
+					<button type="button" class="chip" data-filter="all" aria-pressed="true">All <span class="count" data-count-for="all">30</span></button>
+					<button type="button" class="chip" data-filter="conference" aria-pressed="false">Conferences &amp; hackathons <span class="count" data-count-for="conference">21</span></button>
+					<button type="button" class="chip" data-filter="talk" aria-pressed="false">Talks <span class="count" data-count-for="talk">4</span></button>
+					<button type="button" class="chip" data-filter="workshop" aria-pressed="false">Workshops <span class="count" data-count-for="workshop">5</span></button>
+				</div>
+			</div>
+
+			<ul class="events" id="events-list">
+				<!-- 2026 -->
+				<li class="event" data-type="workshop" data-year="2026"><span class="event-year">2026</span><div class="event-body"><span class="event-title"><a href="https://academy.cineca.it/en/hpc/ai-fundamentals-lindustria-dai-concetti-di-base-alle-applicazioni-industriali/20260914"><strong>AI Fundamentals</strong> per l’Industria: dai concetti di base alle applicazioni industriali</a></span></div><span class="tag tag-workshop">Workshop</span></li>
+				<li class="event" data-type="conference" data-year="2026"><span class="event-year">2026</span><div class="event-body"><span class="event-title"><strong><a href="https://km-scale-summit-26.org/">Km-scale Global modelling summit 2026</a></strong></span><span class="event-place">Hamburg, Germany</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2026"><span class="event-year">2026</span><div class="event-body"><span class="event-title">Destination Earth Climate DT Project meeting</span><span class="event-place">Barcelona, Spain</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2026"><span class="event-year">2026</span><div class="event-body"><span class="event-title"><strong><a href="https://virtual.oxfordabstracts.com/event/public/75422/submission/348/poster">CMIP Community Workshop</a></strong></span><span class="event-place">Kyoto, Japan</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2026"><span class="event-year">2026</span><div class="event-body"><span class="event-title">Destination Earth Climate DT Project meeting</span><span class="event-place">Helsinki, Finland</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2025 -->
+				<li class="event" data-type="talk" data-year="2025"><span class="event-year">2025</span><div class="event-body"><span class="event-title"><strong><a href="https://meetingorganizer.copernicus.org/EGU25/EGU25-9002.html">Advancing Earth System Model Evaluation with AQUA: A Modular Framework for Quality Assessment</a></strong></span><span class="event-place">EGU General Assembly 2025 · Vienna, Austria</span></div><span class="tag tag-talk">Talk</span></li>
+				<li class="event" data-type="conference" data-year="2025"><span class="event-year">2025</span><div class="event-body"><span class="event-title">Destination Earth Climate DT Project meeting</span><span class="event-place">Barcelona, Spain</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2025"><span class="event-year">2025</span><div class="event-body"><span class="event-title">OBSALL Hackathon</span><span class="event-place">Helsinki, Finland</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2025"><span class="event-year">2025</span><div class="event-body"><span class="event-title">EC-Earth General Assembly</span><span class="event-place">Stockholm, Sweden</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2025"><span class="event-year">2025</span><div class="event-body"><span class="event-title"><strong><a href="https://meetingorganizer.copernicus.org/EGU25/EGU25-9002.html">EGU General Assembly 2025</a></strong></span><span class="event-place">Vienna, Austria</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2024 -->
+				<li class="event" data-type="talk" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title"><strong>A workshop on AQUA usage</strong></span><span class="event-place">nextGEMS Cycle 4 Hazard hackathon · Wageningen, Netherlands</span></div><span class="tag tag-talk">Talk</span></li>
+				<li class="event" data-type="talk" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title"><strong>AQUA: a novel quality assessment tool for km-scale simulations in the Destination Earth Climate Digital Twin – An introduction to AQUA and to nextGEMS data access</strong></span><span class="event-place">nextGEMS Storms, Eddies and Science hour</span></div><span class="tag tag-talk">Talk</span></li>
+				<li class="event" data-type="talk" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title"><strong><a href="https://meetingorganizer.copernicus.org/EGU24/EGU24-10935.html">AQUA: a novel quality assessment tool for km-scale simulations in the Destination Earth Climate Digital Twin - the core framework</a></strong></span><span class="event-place">EGU General Assembly 2024 · Vienna, Austria</span></div><span class="tag tag-talk">Talk</span></li>
+				<li class="event" data-type="conference" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title">Destination Earth Climate DT Project meeting and Hackathon</span><span class="event-place">Hamburg, Germany</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title"><strong><a href="https://nextgems-h2020.eu/the-future-of-climate-modeling-insights-from-the-nextgems-hazard-hackathon/">nextGEMS Cycle 4 Hazard hackathon</a></strong></span><span class="event-place">Wageningen, Netherlands</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title">Destination Earth Climate DT Final Kick-off</span><span class="event-place">Helsinki, Finland</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title"><strong><a href="https://meetingorganizer.copernicus.org/EGU24/EGU24-10935.html">EGU General Assembly 2024</a></strong></span><span class="event-place">Vienna, Austria</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2024"><span class="event-year">2024</span><div class="event-body"><span class="event-title"><a href="https://ec-earth.org/consortium/meetings/de-bilt-march-2024/">EC-Earth General Assembly</a></span><span class="event-place">De Bilt, Netherlands</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2023 -->
+				<li class="event" data-type="workshop" data-year="2023"><span class="event-year">2023</span><div class="event-body"><span class="event-title"><a href="https://coderefinery.github.io/2023-09-19-workshop"><strong>CodeRefinery workshop</strong></a></span><span class="event-place">Introduction to Git, Collaborative distributed version control, Reproducible and tested code and research</span></div><span class="tag tag-workshop">Workshop</span></li>
+				<li class="event" data-type="conference" data-year="2023"><span class="event-year">2023</span><div class="event-body"><span class="event-title">Il Friuli Venezia Giulia nel clima che cambia</span><span class="event-place">Trieste, Italy</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2023"><span class="event-year">2023</span><div class="event-body"><span class="event-title"><strong><a href="https://events.mpimet.mpg.de/event/56/">NextGEMS Cycle 3 Hackathon</a></strong></span><span class="event-place">Madrid, Spain</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2023"><span class="event-year">2023</span><div class="event-body"><span class="event-title">Destination Earth Hackathon @ BSC</span><span class="event-place">Barcelona, Spain</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2022 -->
+				<li class="event" data-type="workshop" data-year="2022"><span class="event-year">2022</span><div class="event-body"><span class="event-title"><a href="https://sctrain.eu/course/hpc-parallel/"><strong>SCtrain training week</strong></a></span><span class="event-place">Introduction to Parallel Programming</span></div><span class="tag tag-workshop">Workshop</span></li>
+				<li class="event" data-type="conference" data-year="2022"><span class="event-year">2022</span><div class="event-body"><span class="event-title"><a href="https://indico.icc.ub.edu/event/46/">7th Heidelberg International Symposium on High-Energy Gamma-Ray Astronomy</a></span><span class="event-place">Barcelona, Spain</span></div><span class="tag tag-conference">Conference</span></li>
+				<li class="event" data-type="conference" data-year="2022"><span class="event-year">2022</span><div class="event-body"><span class="event-title"><a href="https://indico.ict.inaf.it/event/949/">Active Galactic Nuclei XIV: The Renaissance of Black Holes and Galaxies</a></span><span class="event-place">Florence, Italy</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2021 -->
+				<li class="event" data-type="workshop" data-year="2021"><span class="event-year">2021</span><div class="event-body"><span class="event-title"><a href="https://www.notion.so/Machine-Learning-Lectures-Cluster-of-Galaxies-IFPU-group-d186f853992849899d943b03a8e2cf87"><strong>Machine Learning Lectures</strong></a></span><span class="event-place">Cluster of Galaxies IFPU group</span></div><span class="tag tag-workshop">Workshop</span></li>
+				<!-- 2020 -->
+				<li class="event" data-type="workshop" data-year="2020"><span class="event-year">2020</span><div class="event-body"><span class="event-title"><strong>Deep Learning Day</strong></span><span class="event-place">AI Student Society</span></div><span class="tag tag-workshop">Workshop</span></li>
+				<li class="event" data-type="conference" data-year="2020"><span class="event-year">2020</span><div class="event-body"><span class="event-title">EuroScience Open Forum 2020</span><span class="event-place">Trieste, Italy</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2019 -->
+				<li class="event" data-type="conference" data-year="2019"><span class="event-year">2019</span><div class="event-body"><span class="event-title">International Conference of Physics Students</span><span class="event-place">Cologne, Germany</span></div><span class="tag tag-conference">Conference</span></li>
+				<!-- 2017 -->
+				<li class="event" data-type="conference" data-year="2017"><span class="event-year">2017</span><div class="event-body"><span class="event-title">International Conference of Physics Students</span><span class="event-place">Turin, Italy</span></div><span class="tag tag-conference">Conference</span></li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- Outreach -->
+	<section class="section" id="outreach" aria-labelledby="outreach-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Science communication &amp; society</p>
+				<h2 id="outreach-title">Outreach</h2>
+			</div>
+
+			<div class="feature">
+				<div class="feature-text">
+					<p class="prose-lead">Since my MS I started doing <strong>outreach</strong> as a volunteer in the
+					<a href="https://ai-sf.it/">AISF</a> association and as a collaborator in the University of Turin.
+					In SISSA I continued my outreach activities and I had, thanks to the
+					<a href="https://medialab.sissa.it/">SISSA Medialab</a>, the possibility
+					to take introductory classes in <strong>Science Communication</strong>.</p>
+				</div>
+				<figure class="feature-fig">
+					<img src="images/outreach.webp" width="900" height="899" loading="lazy" alt="Matteo Nurisso explaining cosmic-ray physics to students during an outreach activity, with a cosmic-ray detector and a laptop on the table.">
+				</figure>
+			</div>
+
+			<div class="cards cards-2">
+				<article class="card">
+					<h3>Training</h3>
+					<p class="card-sub">Courses on <strong>Science Communication</strong></p>
+					<ul class="list">
+						<li><span class="li-year">2022</span><span><a href="https://www.alessiataglianetti.com/corsi-e-servizi/smm-e-personal-branding-2022"><strong>Social media management</strong> and <strong>Personal Branding</strong></a></span></li>
+						<li><span class="li-year">2022</span><span><strong>Science Communication.</strong> The use of objects and easy experiments in face-to-face events</span></li>
+						<li><span class="li-year">2021</span><span><strong>Science Communication</strong> mini-course</span></li>
+						<li><span class="li-year">2019</span><span><strong>Training and Sharing.</strong> Best practices in Science Communication</span></li>
+						<li><span class="li-year">2019</span><span><strong>Science Dialogues.</strong> Training course in Science Communication</span></li>
+					</ul>
+				</article>
+				<article class="card">
+					<h3>Activities</h3>
+					<ul class="list">
+						<li><span class="li-year">2022</span><span><strong>SISSA Student Day</strong> volunteer</span></li>
+						<li><span class="li-year">2020–22</span><span><strong>Trieste Next</strong> volunteer</span></li>
+						<li><span class="li-year">2018–21</span><span><strong>SISSA Student Day</strong> speaker</span></li>
+						<li><span class="li-year">2018–22</span><span><strong>SISSA4Schools</strong> volunteer (<a href="https://www.sissaforschools.it/magazine/non-solo-stelle-quali-altri-oggetti-ci-sono-nelluniverso/">here</a> an interview in Italian)</span></li>
+						<li><span class="li-year">2017–18</span><span><strong>Researcher's night</strong> volunteer</span></li>
+						<li><span class="li-year">2017</span><span><strong><a href="https://www.icps2017.it/">ICPS</a></strong> volunteer</span></li>
+					</ul>
+				</article>
+			</div>
+
+			<div class="feature feature-flip activism">
+				<div class="feature-text">
+					<h3>Activism and Hobbies</h3>
+					<p>I've always felt the need to be active part of the society, with my work and during my free time.
+					I started being a member of the <strong>Scout association</strong> since 2000. From 2013 to 2015 I have been Scoutmaster,
+					being responsible for the activities and educations of kids in the primary school.</p>
+
+					<h4>Silviadizenzero</h4>
+					<p>Since 2013 I'm mostly involved in <strong>Silviadizenzero</strong>, an association whose primary goal are
+					<strong>Climate Science popularization</strong> and spreading of <strong>Vegetarian Culture</strong>.
+					Our main activities are the organization of workshops, meetings with experts, movie projections and collaborations with other
+					associations in Italy. The main goal is to spread scientific culture about climate change and what can be done by individuals
+					both with everyday decisions and lobbying.</p>
+
+					<ol class="mini-timeline">
+						<li><span>2018</span> Vice-president of the association.</li>
+						<li><span>2019</span> A festival dedicated to all the different arts, called <a href="https://www.instagram.com/gingerfest_/">Ginger Fest</a>, is organized by Silviadizenzero.</li>
+						<li><span>2021</span> We start collaborating with a regional radio, <a href="https://www.radiofrejus.it/category/pipponedi/">Radio Dora</a>, creating and presenting a weekly live content on climate change awareness.</li>
+						<li><span>2023</span> The association celebrates its 10th anniversary.</li>
+						<li><span>2024</span> <strong>President</strong> of the association.</li>
+					</ol>
+
+					<p class="actions">
+						<a class="btn btn-sm" href="http://www.silviadizenzero.it">Silviadizenzero website <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+						<a class="btn btn-sm" href="https://www.instagram.com/silviadizenzero/">Silviadizenzero Instagram</a>
+						<a class="btn btn-sm" href="https://www.instagram.com/gingerfest_/">Ginger Fest Instagram</a>
+					</p>
+				</div>
+				<figure class="feature-fig">
+					<img src="images/silviadizenzero.webp" width="1100" height="1098" loading="lazy" alt="A packed theatre audience watching a Silviadizenzero talk on global temperature anomalies.">
+				</figure>
+			</div>
+		</div>
+	</section>
+
+	<!-- Contact -->
+	<section class="section section-contact" id="contact" aria-labelledby="contact-title">
+		<div class="container">
+			<div class="contact-card">
+				<div>
+					<p class="eyebrow">Let's talk</p>
+					<h2 id="contact-title">Get in touch</h2>
+					<p class="section-sub">Collaborations on climate model evaluation, scientific software or outreach — I'm happy to hear from you.</p>
+				</div>
+				<ul class="contact-list">
+					<li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Politecnico di Torino<br>Turin, ITALY</span></li>
+					<li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:matteo.nurisso@polito.it" id="email-link">matteo.nurisso@polito.it</a>
+						<button type="button" class="icon-btn icon-btn-sm" id="copy-email" aria-label="Copy email address" title="Copy email"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></li>
+					<li><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><a href="https://github.com/mnurisso/">Github</a></li>
+					<li><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/matteo-nurisso/">Linkedin</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</main>
+
+<footer class="site-footer">
+	<div class="container footer-inner">
+		<p>© <span id="year">2026</span> Matteo Nurisso</p>
+		<p><a href="#top">Back to top ↑</a></p>
+	</div>
+</footer>
+
+<!-- Command palette -->
+<dialog class="palette" id="palette" aria-label="Command menu">
+	<form method="dialog" class="palette-box">
+		<div class="palette-input">
+			<svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+			<input type="text" id="palette-q" placeholder="Jump to a section, or run a command…" autocomplete="off" aria-label="Search commands" role="combobox" aria-expanded="true" aria-controls="palette-list">
+			<kbd>esc</kbd>
+		</div>
+		<ul id="palette-list" role="listbox" aria-label="Commands"></ul>
+		<p class="palette-foot"><kbd>↑</kbd><kbd>↓</kbd> navigate · <kbd>↵</kbd> select</p>
+	</form>
+</dialog>
+
+<!-- Figure lightbox -->
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged figure">
+	<form method="dialog"><button class="icon-btn lightbox-close" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></form>
+	<img id="lightbox-img" alt="">
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<noscript><style>.reveal{opacity:1!important;transform:none!important}.hero-hint{display:none}</style></noscript>
+</body>
 </html>
