@@ -23,6 +23,8 @@ read it before changing anything, and update it when you change a convention.
 | `assets/favicon.svg` | AQUA water-drop favicon (hand-drawn; no official logo file exists in the AQUA repo) |
 | `images/` | Optimised **WebP** images only (plus an unused `aqua_poster.png` kept from the old site) |
 | `scripts/check-links.py` | Link/id/icon checker (see §7) |
+| `scripts/update-papers.py` | Reads the owner's ORCID, finds journal articles missing from `index.html`, inserts them at the top of `#pubs` (metadata from Crossref) and bumps the paper counter |
+| `.github/workflows/update-papers.yml` | Weekly (Mon 05:17 UTC) + manual run of the script; force-pushes branch `auto/new-papers` and opens/updates a PR for the owner to review |
 
 - The site replaced the HTML5 UP "Solid State" template (jQuery, Sass, Font Awesome). All of that was deleted on purpose.
   Do not reintroduce any of it.
@@ -110,6 +112,11 @@ Live data (`github.js`):
 **Add a publication** — copy an `<li class="pub reveal" data-topic="climate|astro" data-year="YYYY">` in `index.html`
 (newest first inside `#pubs`; "Under review" uses `tag-warn`, published `tag-ok`; owner's name in `<strong>`). Bump the
 static `data-count="pubs"` number in `#stats`.
+
+**Papers are partly automated.** The weekly workflow adds new ORCID *journal articles* (not preprints/conference abstracts) as a PR.
+It guesses `data-topic` from the journal name and takes authors/title from Crossref, so review the PR. Requirements: repo setting
+*Settings → Actions → General → "Allow GitHub Actions to create and approve pull requests"* must be on. Test locally with
+`python3 scripts/update-papers.py --dry-run` (or `--index copy.html` on a copy). Papers not in ORCID (e.g. under-review preprints) are still added by hand.
 
 **Add a talk / conference / workshop** — copy an `<li class="event" data-type data-year>` in `#events-list`, newest year
 first; put the year text in `.event-year`; update the static badge counts (`data-count-for`) and the static
