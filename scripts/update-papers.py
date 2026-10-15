@@ -81,23 +81,40 @@ def topic(meta):
 
 
 def citations(doi):
-    """Static fallback for the citation badge (the page refreshes it live): highest of OpenAlex and Crossref."""
-    counts = []
-    try:
-        counts.append(get_json(f'https://api.openalex.org/works/doi:{doi}?select=cited_by_count&mailto={CONTACT}')['cited_by_count'])
-    except Exception:  # noqa: BLE001
-        pass
-    try:
-        counts.append(get_json(f'https://api.crossref.org/works/{urllib.parse.quote(doi)}?mailto={CONTACT}')['message']['is-referenced-by-count'])
-    except Exception:  # noqa: BLE001
-        pass
-    return max(counts or [0])
+    """Static fallback for the citation badge (the page refreshes it live).
+
+    Same rule as MN.hydrateCitations in assets/js/github.js: paper + preprints (Crossref has-preprint);
+    OpenAlex counted once per distinct work, Crossref summed per DOI; the higher total wins.
+    """
+    def one(d):
+        oa_id, oa, cr, pre = None, 0, 0, []
+        try:
+            r = get_json(f'https://api.openalex.org/works/doi:{d}?select=id,cited_by_count&mailto={CONTACT}')
+            oa_id, oa = r['id'], r['cited_by_count']
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            m = get_json(f'https://api.crossref.org/works/{urllib.parse.quote(d)}?mailto={CONTACT}')['message']
+            cr = m.get('is-referenced-by-count', 0)
+            pre = [x['id'].lower() for x in (m.get('relation') or {}).get('has-preprint', [])]
+        except Exception:  # noqa: BLE001
+            pass
+        return oa_id, oa, cr, pre
+
+    oa_id, oa, cr, pre = one(doi)
+    works = {oa_id: oa} if oa_id else {}
+    for p in pre:
+        pid, poa, pcr, _ = one(p)
+        if pid and pid not in works:
+            works[pid] = poa
+        cr += pcr
+    return max(sum(works.values()), cr)
 
 
 def entry(doi, meta):
     n = citations(doi)
     hidden = '' if n else ' hidden'
-    cites = (f'<span class="cites" data-doi="{doi}" title="Citations (highest of OpenAlex and Crossref)"{hidden}>'
+    cites = (f'<span class="cites" data-doi="{doi}" title="Citations, preprints included (highest of OpenAlex and Crossref)"{hidden}>'
              f'<svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg><strong>{n}</strong> citation{"" if n == 1 else "s"}</span>')
     return f'''				<li class="pub reveal" data-topic="{topic(meta)}" data-year="{meta['year']}">
 					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">{meta['date']}</span></div>

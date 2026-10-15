@@ -54,8 +54,9 @@ read it before changing anything, and update it when you change a convention.
    PRs, issues over the last 12 months** (personal, live). Do not bring back "release version"/"licence" tiles.
 10. Every external link opens in a new tab (done by `main.js`; do not hand-write `target=_blank`).
 
-11. **Citations come from OpenAlex + Crossref (highest of the two), never ResearchGate** — ResearchGate has no public API and blocks bots.
-    ORCID does not carry citation counts. `.cites[data-doi]` badges hold a static fallback and are refreshed live by `MN.hydrateCitations()`;
+11. **Citations come from OpenAlex + Crossref (highest of the two), preprints included, never ResearchGate** — ResearchGate has no public API and blocks bots.
+    ORCID does not carry citation counts. Preprints are found automatically from Crossref's `has-preprint` relation and added (OpenAlex counted once per merged work, Crossref per DOI).
+    `.cites[data-doi]` badges hold a static fallback and are refreshed live by `MN.hydrateCitations()`;
     a count of 0 hides the badge. `scripts/update-papers.py` writes the static count for new papers.
 12. Social profiles in hero/contact/JSON-LD/palette: GitHub, LinkedIn, ORCID, ResearchGate (`researchgate.net/profile/Matteo-Nurisso`, supplied by the owner, not verifiable by bot), email.
 13. The logo wall ("Institutions and projects": Politecnico di Torino, CNR-ISAC, SISSA, Destination Earth, ECMWF, EC-Earth) uses the organisations' own
