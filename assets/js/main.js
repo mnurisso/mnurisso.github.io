@@ -306,6 +306,7 @@ if (palette) {
 		{ label: 'Scientific software', hint: 'Go to', icon: 'package', run: go('software.html') },
 		{ label: 'AQUA', hint: 'Software', icon: 'package', run: go('software.html', 'aqua') },
 		{ label: 'AQUA diagnostics', hint: 'Software', icon: 'package', run: go('software.html', 'diagnostics') },
+		{ label: 'ClimateDT evaluation charts', hint: 'Software', icon: 'book', run: go('software.html', 'charts') },
 		{ label: 'Career', hint: 'Go to', icon: 'book', run: go('index.html', 'career') },
 		{ label: 'Talks & events', hint: 'Go to', icon: 'pin', run: go('index.html', 'events') },
 		{ label: 'Outreach', hint: 'Go to', icon: 'users', run: go('index.html', 'outreach') },

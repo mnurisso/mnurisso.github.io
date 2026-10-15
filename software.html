@@ -51,6 +51,7 @@
 		<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
 		<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
 		<symbol id="i-orcid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.3" cy="7.9" r="0.6"/><path d="M8.3 10.8v6M11.8 10.8v6h2a3 3 0 0 0 0-6z"/></symbol>
+		<symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
 	</defs>
 </svg>
 
@@ -119,6 +120,7 @@
 		<div class="container subnav-inner">
 			<a href="#aqua">AQUA</a>
 			<a href="#diagnostics">Diagnostics</a>
+			<a href="#charts">Charts</a>
 			<a href="#ecosystem">Ecosystem</a>
 			<a href="#projects">Projects</a>
 			<a href="#stack">Stack</a>
@@ -174,7 +176,7 @@
 			<!-- Install -->
 			<div class="install tabs" data-tabs>
 				<div class="install-head">
-					<h3>Try it</h3>
+					<h3>Install</h3>
 					<div class="tablist tablist-sm" role="tablist" aria-label="Installation method">
 						<button role="tab" id="tab-conda" aria-controls="panel-conda" aria-selected="true">conda-forge</button>
 						<button role="tab" id="tab-pip" aria-controls="panel-pip" aria-selected="false" tabindex="-1">PyPI</button>
@@ -185,8 +187,7 @@
 					<div class="code"><pre><code>mamba install -c conda-forge aqua-core</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
 				</div>
 				<div class="tabpanel" role="tabpanel" id="panel-pip" aria-labelledby="tab-pip" hidden>
-					<div class="code"><pre><code>pip install aqua-core
-pip install aqua-diagnostics</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+					<div class="code"><pre><code>pip install aqua-core</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
 				</div>
 				<div class="tabpanel" role="tabpanel" id="panel-src" aria-labelledby="tab-src" hidden>
 					<div class="code"><pre><code>git clone git@github.com:DestinE-Climate-DT/AQUA.git
@@ -194,7 +195,7 @@ cd AQUA
 mamba env create -f environment.yml
 mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
 				</div>
-				<p class="install-note">AQUA requires Python 3.12 or newer. A container-based deployment is also available — see the <a href="https://aqua.readthedocs.io/en/latest/">documentation</a>.</p>
+				<p class="install-note">AQUA requires Python 3.12 or newer. A container-based deployment is also available — see the <a href="https://aqua.readthedocs.io/en/latest/">documentation</a>. New to AQUA? <a href="https://github.com/DestinE-Climate-DT/climatedt-community-resources">Try the ecosystem</a> with the ClimateDT community resources.</p>
 			</div>
 		</div>
 	</section>
@@ -216,8 +217,15 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 					Diagnostics can be executed standalone via the Python API, or through the <code>aqua analysis</code> wrapper provided by AQUA core.
 					I am a main contributor of AQUA-diagnostics.</p>
 
-					<div class="code code-inline"><pre><code>pip install aqua-diagnostics</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
-					<p class="install-note">Requires a working AQUA core installation. See the repository for the full setup, including catalogs and auxiliary files.</p>
+					<aside class="callout">
+						<h3>Try the AQUA ecosystem</h3>
+						<p>The <strong>climatedt-community-resources</strong> repository collects introduction materials and examples for those who want to access and analyse ClimateDT data.
+						Running the diagnostics needs a conda environment with AQUA core: follow the installation steps in the repository.</p>
+						<p class="actions">
+							<a class="btn btn-primary btn-sm" href="https://github.com/DestinE-Climate-DT/climatedt-community-resources"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Try it: community resources</a>
+							<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics#installation">Installation steps</a>
+						</p>
+					</aside>
 
 					<p class="actions">
 						<a class="btn btn-primary btn-sm" href="https://aqua-diagnostics.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Documentation</a>
@@ -234,8 +242,67 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 		</div>
 	</section>
 
+	<!-- Evaluation charts -->
+	<section class="section" id="charts" aria-labelledby="charts-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Destination Earth</p>
+				<h2 id="charts-title">ClimateDT evaluation charts</h2>
+				<p class="section-sub">The AQUA plots of the Climate DT simulations are published on the ClimateDT evaluation charts, part of the Destination Earth platform.</p>
+			</div>
+
+			<div class="gallery">
+				<figure class="chart reveal">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Bias of specific humidity at 180 hPa relative to ERA5">
+						<img src="images/charts/bias-q180.webp" width="1000" height="715" loading="lazy" alt="Map of the global bias in specific humidity at 180 hPa for IFS-NEMO relative to ERA5, mostly negative (blue) across the tropics.">
+					</button>
+					<figcaption><strong>Bias of specific humidity at 180 hPa relative to ERA5</strong><span>Global bias map for IFS-NEMO historical-1990, with significance stippling.</span></figcaption>
+				</figure>
+				<figure class="chart reveal">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Sea surface height variability, Agulhas region">
+						<img src="images/charts/ssh-agulhas.webp" width="1000" height="773" loading="lazy" alt="Map of sea surface height variability around southern Africa showing eddies in the Agulhas region.">
+					</button>
+					<figcaption><strong>Sea surface height variability, Agulhas region</strong><span>Frontier diagnostic on high-resolution IFS-NEMO output.</span></figcaption>
+				</figure>
+				<figure class="chart reveal">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Arctic sea-ice thickness against PIOMAS">
+						<img src="images/charts/seaice-arctic.webp" width="1000" height="735" loading="lazy" alt="Six polar maps of Arctic sea-ice thickness for March and September from PIOMAS, IFS-NEMO and their difference.">
+					</button>
+					<figcaption><strong>Arctic sea-ice thickness against PIOMAS</strong><span>March and September, IFS-NEMO historical-1990 and the difference.</span></figcaption>
+				</figure>
+				<figure class="chart reveal">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Climatology of specific humidity at 180 hPa">
+						<img src="images/charts/climatology-q180.webp" width="1000" height="697" loading="lazy" alt="Global map of the mean specific humidity at 180 hPa with a strong tropical maximum in red.">
+					</button>
+					<figcaption><strong>Climatology of specific humidity at 180 hPa</strong><span>Long-term mean map from IFS-NEMO historical-1990.</span></figcaption>
+				</figure>
+				<figure class="chart reveal">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: ENSO regression map against ERA5">
+						<img src="images/charts/enso-regression.webp" width="1000" height="700" loading="lazy" alt="Global map of the regression of sea surface temperature on the ENSO index compared to ERA5.">
+					</button>
+					<figcaption><strong>ENSO regression map against ERA5</strong><span>Teleconnection diagnostic of sea surface temperature.</span></figcaption>
+				</figure>
+				<figure class="chart reveal">
+					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: A tropical cyclone through time">
+						<img src="images/charts/tropical-cyclone.webp" width="847" height="900" loading="lazy" alt="Nine panels of wind speed showing a tropical cyclone off the Pacific coast of Mexico evolving over three days.">
+					</button>
+					<figcaption><strong>A tropical cyclone through time</strong><span>Nine snapshots of the wind speed, IFS tco1279-orca025.</span></figcaption>
+				</figure>
+			</div>
+			<p class="note">Example figures produced by AQUA-diagnostics, taken from the <a href="https://aqua-diagnostics.readthedocs.io/en/latest/">package documentation</a> (Apache-2.0, © European Union).</p>
+
+			<div class="cta-band reveal">
+				<div>
+					<h3>See the real thing</h3>
+					<p>The dashboard covers the evaluation of the ClimateDT simulations with AQUA diagnostics. It requires authentication with a DestinE Platform (DESP) account.</p>
+				</div>
+				<p class="actions"><a class="btn btn-primary" href="https://climatedt-evaluation-charts.destine.eu/"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Open the evaluation charts <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+			</div>
+		</div>
+	</section>
+
 	<!-- Ecosystem -->
-	<section class="section" id="ecosystem" aria-labelledby="eco-title">
+	<section class="section section-alt" id="ecosystem" aria-labelledby="eco-title">
 		<div class="container">
 			<div class="section-head">
 				<p class="eyebrow">How the pieces fit</p>
@@ -259,7 +326,7 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 					<span class="flow-step">3</span>
 					<h3>AQUA core</h3>
 					<p>Data access, regridding, averaging and aggregation on large datasets.</p>
-					<p class="flow-links"><a class="link-chip" href="https://github.com/DestinE-Climate-DT/AQUA"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="lc-kind">GitHub</span><span class="lc-name">AQUA</span></a><a class="link-chip" href="https://pypi.org/project/aqua-core/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg><span class="lc-kind">PyPI</span><span class="lc-name">aqua-core</span></a></p>
+					<p class="flow-links"><a class="link-chip" href="https://github.com/DestinE-Climate-DT/AQUA"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="lc-kind">GitHub</span><span class="lc-name">AQUA</span></a><a class="link-chip" href="https://pypi.org/project/aqua-core/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg><span class="lc-kind">PyPI</span><span class="lc-name">aqua-core</span></a><a class="link-chip" href="https://anaconda.org/conda-forge/aqua-core"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg><span class="lc-kind">conda</span><span class="lc-name">aqua-core</span></a></p>
 				</li>
 				<li class="flow-node">
 					<span class="flow-step">4</span>
@@ -272,7 +339,7 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 	</section>
 
 	<!-- Projects -->
-	<section class="section section-alt" id="projects" aria-labelledby="projects-title">
+	<section class="section" id="projects" aria-labelledby="projects-title">
 		<div class="container">
 			<div class="section-head">
 				<p class="eyebrow">Repositories</p>
@@ -401,7 +468,7 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 	</section>
 
 	<!-- Stack -->
-	<section class="section" id="stack" aria-labelledby="stack-title">
+	<section class="section section-alt" id="stack" aria-labelledby="stack-title">
 		<div class="container split">
 			<div class="section-head">
 				<p class="eyebrow">Tools of the trade</p>
