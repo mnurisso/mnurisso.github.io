@@ -23,3 +23,6 @@ python3 -m http.server 8000
 
 Content lives directly in the HTML: add a publication by copying a `<li class="pub">`,
 an event by copying a `<li class="event">` (set `data-type` and `data-year`).
+
+Contributor and AI-agent documentation (conventions, design system, recipes, testing): see [`AGENTS.md`](AGENTS.md).
+Check links with `python3 scripts/check-links.py`.
