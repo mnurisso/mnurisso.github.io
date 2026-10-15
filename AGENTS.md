@@ -23,6 +23,8 @@ read it before changing anything, and update it when you change a convention.
 | `assets/favicon.svg` | AQUA water-drop favicon (hand-drawn; no official logo file exists in the AQUA repo) |
 | `images/` | Optimised **WebP** images only (plus an unused `aqua_poster.png` kept from the old site) |
 | `scripts/check-links.py` | Link/id/icon checker (see §7) |
+| `scripts/og-image.svg` | Source of `images/og-image.jpg` (1200×630 link-preview image). Regenerate on macOS: `qlmanage -t -s 1200 -o out scripts/og-image.svg`, then `sips -c 630 1200 out/og-image.svg.png --out x.png` and convert to JPEG (the SVG has its content centred in a square canvas because `sips` centre-crops) |
+| `images/logos/` | Official partner logos (SVG/WebP) used by the logo wall in the About section |
 | `scripts/update-papers.py` | Reads the owner's ORCID, finds journal articles missing from `index.html`, inserts them at the top of `#pubs` (metadata from Crossref) and bumps the paper counter |
 | `.github/workflows/update-papers.yml` | Weekly (Mon 05:17 UTC) + manual run of the script; force-pushes branch `auto/new-papers` and opens/updates a PR for the owner to review |
 
@@ -52,6 +54,16 @@ read it before changing anything, and update it when you change a convention.
    PRs, issues over the last 12 months** (personal, live). Do not bring back "release version"/"licence" tiles.
 10. Every external link opens in a new tab (done by `main.js`; do not hand-write `target=_blank`).
 
+11. **Citations come from OpenAlex + Crossref (highest of the two), never ResearchGate** — ResearchGate has no public API and blocks bots.
+    ORCID does not carry citation counts. `.cites[data-doi]` badges hold a static fallback and are refreshed live by `MN.hydrateCitations()`;
+    a count of 0 hides the badge. `scripts/update-papers.py` writes the static count for new papers.
+12. Social profiles in hero/contact/JSON-LD/palette: GitHub, LinkedIn, ORCID, ResearchGate (`researchgate.net/profile/Matteo-Nurisso`, supplied by the owner, not verifiable by bot), email.
+13. The logo wall ("Institutions and projects": Politecnico di Torino, CNR-ISAC, SISSA, Destination Earth, ECMWF, EC-Earth) uses the organisations' own
+    files. Destination Earth and ECMWF logos are white-on-dark, so those tiles use `.logo-tile.dark`; others sit on white tiles. Logos stay unmodified;
+    tell the owner before adding more (trademarks). EPOCHAL has no logo.
+14. `#top` must point at a real in-flow element (`<span id="top">` at the start of `<body>`), **not** the fixed header — fixed elements do not scroll
+    the page, which made "Back to top" and `#top` links do nothing.
+
 ## 3. Design system (`assets/css/style.css`)
 
 - Tokens live in `:root` (dark) and `:root[data-theme="light"]`. **Only use the tokens** (`--bg`, `--bg-alt`, `--surface`,
@@ -61,7 +73,7 @@ read it before changing anything, and update it when you change a convention.
 - Headings and `<strong>` use `--heading`; body uses `--text`; secondary text `--muted`.
 - Components: `.btn` (`-primary`, `-sm`, `-ghost`), `.chip` (filter), `.tag` (`-ok`, `-warn`, …), `.pill`, `.card`,
   `.feature` (+ `-flip`, `-single`), `.callout`, `.link-chip` (+ `.lc-kind`, `.lc-name`), `.timeline`, `.stats`
-  (+ `-3`, `-inline`), `.flow`, `.tabs`/`.tablist`/`.tabpanel`, `.code`, `.subnav`.
+  (+ `-3`, `-inline`), `.logo-wall`/`.logo-tile`, `.cites`, `.flow`, `.tabs`/`.tablist`/`.tabpanel`, `.code`, `.subnav`.
 - Typography: serif display for headings (`ui-serif…`), system sans for text, system mono for labels/code.
 - Layout gotchas learned the hard way:
   - Grid columns that must shrink on phones must be `minmax(0, 1fr)`, **not** `1fr` (a `<pre>` caused horizontal overflow).

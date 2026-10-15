@@ -128,7 +128,28 @@ async function hydrateProfile(user = 'mnurisso') {
 	return out;
 }
 
+/** Citation counts per DOI: the higher of OpenAlex and Crossref (ResearchGate has no public API). */
+async function hydrateCitations() {
+	const mail = 'matteo.nurisso@polito.it';
+	await Promise.allSettled([...document.querySelectorAll('.cites[data-doi]')].map(async (el) => {
+		const doi = el.dataset.doi;
+		const [oa, cr] = await Promise.allSettled([
+			cachedJSON(`https://api.openalex.org/works/doi:${doi}?select=cited_by_count&mailto=${mail}`),
+			cachedJSON(`https://api.crossref.org/works/${doi}?mailto=${mail}`),
+		]);
+		const counts = [];
+		if (oa.status === 'fulfilled' && typeof oa.value.cited_by_count === 'number') counts.push(oa.value.cited_by_count);
+		if (cr.status === 'fulfilled' && typeof cr.value.message?.['is-referenced-by-count'] === 'number') counts.push(cr.value.message['is-referenced-by-count']);
+		if (!counts.length) return; // keep the static value
+		const n = Math.max(...counts);
+		el.querySelector('strong').textContent = n;
+		el.lastChild.textContent = n === 1 ? ' citation' : ' citations';
+		el.hidden = n === 0;
+	}));
+}
+
 window.MN = window.MN || {};
+window.MN.hydrateCitations = hydrateCitations;
 window.MN.hydrateRepos = hydrateRepos;
 window.MN.hydrateProfile = hydrateProfile;
 })();

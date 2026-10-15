@@ -259,6 +259,8 @@ MN.hydrateRepos?.().then((stats) => {
 	onScroll();
 }).catch(() => { /* stay static */ });
 
+MN.hydrateCitations?.();
+
 MN.hydrateProfile?.().then((values) => {
 	for (const [key, value] of Object.entries(values)) {
 		const el = $(`[data-live="${key}"]`);
@@ -314,6 +316,7 @@ if (palette) {
 		{ label: 'Toggle light / dark theme', hint: 'Action', icon: 'sun', run: () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark') },
 		{ label: 'Copy email address', hint: 'Action', icon: 'copy', run: () => copyText('matteo.nurisso@polito.it', 'Email address copied') },
 		{ label: 'Open GitHub profile', hint: 'Link', icon: 'github', run: () => window.open('https://github.com/mnurisso/', '_blank', 'noopener') },
+		{ label: 'Open ResearchGate profile', hint: 'Link', icon: 'researchgate', run: () => window.open('https://www.researchgate.net/profile/Matteo-Nurisso', '_blank', 'noopener') },
 		{ label: 'Open ORCID profile', hint: 'Link', icon: 'orcid', run: () => window.open('https://orcid.org/0000-0002-5962-0680', '_blank', 'noopener') },
 		{ label: 'Open LinkedIn profile', hint: 'Link', icon: 'linkedin', run: () => window.open('https://www.linkedin.com/in/matteo-nurisso/', '_blank', 'noopener') },
 	];

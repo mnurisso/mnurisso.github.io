@@ -80,13 +80,31 @@ def topic(meta):
     return 'astro' if any(v in j for v in ASTRO_VENUES) else 'climate'
 
 
+def citations(doi):
+    """Static fallback for the citation badge (the page refreshes it live): highest of OpenAlex and Crossref."""
+    counts = []
+    try:
+        counts.append(get_json(f'https://api.openalex.org/works/doi:{doi}?select=cited_by_count&mailto={CONTACT}')['cited_by_count'])
+    except Exception:  # noqa: BLE001
+        pass
+    try:
+        counts.append(get_json(f'https://api.crossref.org/works/{urllib.parse.quote(doi)}?mailto={CONTACT}')['message']['is-referenced-by-count'])
+    except Exception:  # noqa: BLE001
+        pass
+    return max(counts or [0])
+
+
 def entry(doi, meta):
+    n = citations(doi)
+    hidden = '' if n else ' hidden'
+    cites = (f'<span class="cites" data-doi="{doi}" title="Citations (highest of OpenAlex and Crossref)"{hidden}>'
+             f'<svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg><strong>{n}</strong> citation{"" if n == 1 else "s"}</span>')
     return f'''				<li class="pub reveal" data-topic="{topic(meta)}" data-year="{meta['year']}">
 					<div class="pub-meta"><span class="tag tag-ok">Published</span><span class="pub-year">{meta['date']}</span></div>
 					<h3 class="pub-title">{html.escape(meta['title'])}</h3>
 					<p class="pub-authors">{fmt_authors(meta['authors'])}</p>
 					<p class="pub-venue"><span class="journal">{html.escape(meta['journal'])}</span> · {meta['date']}</p>
-					<p class="pub-links"><a href="https://doi.org/{doi}">DOI: {doi} {ARROW}</a></p>
+					<p class="pub-links"><a href="https://doi.org/{doi}">DOI: {doi} {ARROW}</a>{cites}</p>
 				</li>
 '''
 
