@@ -545,3 +545,9 @@ dialog[open] { animation: pop 0.18s cubic-bezier(.2,.8,.2,1); }
 	.section { padding: 1.5rem 0; }
 	.js .reveal { opacity: 1; transform: none; }
 }
+
+/* ---------- Citation badges ---------- */
+.pub-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.25rem; }
+.cites { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font: 500 0.8rem/1.4 var(--font-mono); }
+.cites strong { color: inherit; }
+.cites[hidden] { display: none; }

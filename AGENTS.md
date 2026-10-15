@@ -23,6 +23,7 @@ read it before changing anything, and update it when you change a convention.
 | `assets/favicon.svg` | AQUA water-drop favicon (hand-drawn; no official logo file exists in the AQUA repo) |
 | `images/` | Optimised **WebP** images only (plus an unused `aqua_poster.png` kept from the old site) |
 | `scripts/check-links.py` | Link/id/icon checker (see §7) |
+| `scripts/og-image.svg` | Source of `images/og-image.jpg` (1200×630 link-preview image). Regenerate on macOS: `qlmanage -t -s 1200 -o out scripts/og-image.svg`, then `sips -c 630 1200 out/og-image.svg.png --out x.png` and convert to JPEG (the SVG has its content centred in a square canvas because `sips` centre-crops) |
 | `scripts/update-papers.py` | Reads the owner's ORCID, finds journal articles missing from `index.html`, inserts them at the top of `#pubs` (metadata from Crossref) and bumps the paper counter |
 | `.github/workflows/update-papers.yml` | Weekly (Mon 05:17 UTC) + manual run of the script; force-pushes branch `auto/new-papers` and opens/updates a PR for the owner to review |
 
@@ -52,6 +53,15 @@ read it before changing anything, and update it when you change a convention.
    PRs, issues over the last 12 months** (personal, live). Do not bring back "release version"/"licence" tiles.
 10. Every external link opens in a new tab (done by `main.js`; do not hand-write `target=_blank`).
 
+11. **Citations come from OpenAlex + Crossref (highest of the two), preprints included, never ResearchGate** — ResearchGate has no public API and blocks bots.
+    ORCID does not carry citation counts. Preprints are found automatically from Crossref's `has-preprint` relation and added (OpenAlex counted once per merged work, Crossref per DOI).
+    `.cites[data-doi]` badges hold a static fallback and are refreshed live by `MN.hydrateCitations()`;
+    a count of 0 hides the badge. `scripts/update-papers.py` writes the static count for new papers.
+12. Social profiles in hero/contact/JSON-LD/palette: GitHub, LinkedIn, ORCID, ResearchGate (`researchgate.net/profile/Matteo-Nurisso`, supplied by the owner, not verifiable by bot), email.
+13. **No partner logo wall** — the owner tried it and did not like it; do not add logos of institutions/projects again unless asked.
+14. `#top` must point at a real in-flow element (`<span id="top">` at the start of `<body>`), **not** the fixed header — fixed elements do not scroll
+    the page, which made "Back to top" and `#top` links do nothing.
+
 ## 3. Design system (`assets/css/style.css`)
 
 - Tokens live in `:root` (dark) and `:root[data-theme="light"]`. **Only use the tokens** (`--bg`, `--bg-alt`, `--surface`,
@@ -61,7 +71,7 @@ read it before changing anything, and update it when you change a convention.
 - Headings and `<strong>` use `--heading`; body uses `--text`; secondary text `--muted`.
 - Components: `.btn` (`-primary`, `-sm`, `-ghost`), `.chip` (filter), `.tag` (`-ok`, `-warn`, …), `.pill`, `.card`,
   `.feature` (+ `-flip`, `-single`), `.callout`, `.link-chip` (+ `.lc-kind`, `.lc-name`), `.timeline`, `.stats`
-  (+ `-3`, `-inline`), `.flow`, `.tabs`/`.tablist`/`.tabpanel`, `.code`, `.subnav`.
+  (+ `-3`, `-inline`), `.cites`, `.flow`, `.tabs`/`.tablist`/`.tabpanel`, `.code`, `.subnav`.
 - Typography: serif display for headings (`ui-serif…`), system sans for text, system mono for labels/code.
 - Layout gotchas learned the hard way:
   - Grid columns that must shrink on phones must be `minmax(0, 1fr)`, **not** `1fr` (a `<pre>` caused horizontal overflow).
@@ -119,7 +129,7 @@ It guesses `data-topic` from the journal name and takes authors/title from Cross
 `python3 scripts/update-papers.py --dry-run` (or `--index copy.html` on a copy). Papers not in ORCID (e.g. under-review preprints) are still added by hand.
 
 **Add a talk / conference / workshop** — copy an `<li class="event" data-type data-year>` in `#events-list`, newest year
-first; put the year text in `.event-year`; update the static badge counts (`data-count-for`) and the static
+first; put the year text in `.event-year`; for a **future** event add the `data-upcoming` attribute and use `<span class="tag tag-warn">Upcoming</span>` instead of the type tag (it stays under its `data-type` filter but is not counted); when it has happened, drop `data-upcoming`, restore the type tag and bump the counts. Update the static badge counts (`data-count-for`) and the static
 `data-count="conference"` tile.
 
 **Add a software project** — copy a card in `#projects-grid` of `software.html` (`data-kind`, `data-repo="owner/name"`,

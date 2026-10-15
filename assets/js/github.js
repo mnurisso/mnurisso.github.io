@@ -128,7 +128,50 @@ async function hydrateProfile(user = 'mnurisso') {
 	return out;
 }
 
+/**
+ * Citation counts per paper, preprints included (ResearchGate has no public API).
+ * Two sources are summed over the paper and its preprint DOIs (from Crossref's has-preprint relation):
+ *   - OpenAlex, counted once per distinct work (it usually merges a preprint into the published work);
+ *   - Crossref, summed over the DOIs.
+ * The page shows the higher of the two totals.
+ */
+async function hydrateCitations() {
+	const mail = 'matteo.nurisso@polito.it';
+	const one = async (doi) => {
+		const [oa, cr] = await Promise.allSettled([
+			cachedJSON(`https://api.openalex.org/works/doi:${doi}?select=id,cited_by_count&mailto=${mail}`),
+			cachedJSON(`https://api.crossref.org/works/${doi}?mailto=${mail}`),
+		]);
+		const msg = cr.status === 'fulfilled' ? cr.value.message : null;
+		return {
+			id: oa.status === 'fulfilled' ? oa.value.id : null,
+			oa: oa.status === 'fulfilled' ? oa.value.cited_by_count : null,
+			cr: msg && typeof msg['is-referenced-by-count'] === 'number' ? msg['is-referenced-by-count'] : null,
+			pre: ((msg && msg.relation && msg.relation['has-preprint']) || []).map((x) => x.id.toLowerCase()),
+		};
+	};
+	await Promise.allSettled([...document.querySelectorAll('.cites[data-doi]')].map(async (el) => {
+		const main = await one(el.dataset.doi);
+		if (main.oa == null && main.cr == null) return; // keep the static value
+		const works = new Map();
+		if (main.id) works.set(main.id, main.oa || 0);
+		let crossref = main.cr || 0;
+		const extras = await Promise.all(main.pre.map((d) => one(d).catch(() => null)));
+		for (const x of extras) {
+			if (!x) continue;
+			if (x.id && !works.has(x.id)) works.set(x.id, x.oa || 0);
+			crossref += x.cr || 0;
+		}
+		const n = Math.max([...works.values()].reduce((s, v) => s + v, 0), crossref);
+		el.querySelector('strong').textContent = n;
+		el.lastChild.textContent = n === 1 ? ' citation' : ' citations';
+		el.title = 'Citations, preprints included (highest of OpenAlex and Crossref)';
+		el.hidden = n === 0;
+	}));
+}
+
 window.MN = window.MN || {};
+window.MN.hydrateCitations = hydrateCitations;
 window.MN.hydrateRepos = hydrateRepos;
 window.MN.hydrateProfile = hydrateProfile;
 })();
