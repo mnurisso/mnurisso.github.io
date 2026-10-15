@@ -129,7 +129,7 @@ It guesses `data-topic` from the journal name and takes authors/title from Cross
 `python3 scripts/update-papers.py --dry-run` (or `--index copy.html` on a copy). Papers not in ORCID (e.g. under-review preprints) are still added by hand.
 
 **Add a talk / conference / workshop** — copy an `<li class="event" data-type data-year>` in `#events-list`, newest year
-first; put the year text in `.event-year`; update the static badge counts (`data-count-for`) and the static
+first; put the year text in `.event-year`; for a **future** event add the `data-upcoming` attribute and use `<span class="tag tag-warn">Upcoming</span>` instead of the type tag (it stays under its `data-type` filter but is not counted); when it has happened, drop `data-upcoming`, restore the type tag and bump the counts. Update the static badge counts (`data-count-for`) and the static
 `data-count="conference"` tile.
 
 **Add a software project** — copy a card in `#projects-grid` of `software.html` (`data-kind`, `data-repo="owner/name"`,
