@@ -546,15 +546,6 @@ dialog[open] { animation: pop 0.18s cubic-bezier(.2,.8,.2,1); }
 	.js .reveal { opacity: 1; transform: none; }
 }
 
-/* ---------- Partners logo wall ---------- */
-.partners { margin-top: 3rem; }
-.partners-title { font: 600 0.8rem/1 var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 1rem; }
-.logo-wall { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.75rem; }
-.logo-tile { display: grid; place-items: center; height: 92px; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: var(--radius-sm); background: #fff; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
-.logo-tile.dark { background: #10264a; }
-.logo-tile:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--accent); }
-.logo-tile img { height: var(--h, 40px); width: auto; max-width: 100%; object-fit: contain; }
-
 /* ---------- Citation badges ---------- */
 .pub-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 1.25rem; }
 .cites { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font: 500 0.8rem/1.4 var(--font-mono); }
