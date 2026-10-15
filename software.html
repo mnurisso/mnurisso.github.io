@@ -120,8 +120,8 @@
 		<div class="container subnav-inner">
 			<a href="#aqua">AQUA</a>
 			<a href="#diagnostics">Diagnostics</a>
-			<a href="#charts">Charts</a>
 			<a href="#ecosystem">Ecosystem</a>
+			<a href="#charts">Charts</a>
 			<a href="#projects">Projects</a>
 			<a href="#stack">Stack</a>
 		</div>
@@ -242,67 +242,8 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 		</div>
 	</section>
 
-	<!-- Evaluation charts -->
-	<section class="section" id="charts" aria-labelledby="charts-title">
-		<div class="container">
-			<div class="section-head">
-				<p class="eyebrow">Destination Earth</p>
-				<h2 id="charts-title">ClimateDT evaluation charts</h2>
-				<p class="section-sub">The AQUA plots of the Climate DT simulations are published on the ClimateDT evaluation charts, part of the Destination Earth platform.</p>
-			</div>
-
-			<div class="gallery">
-				<figure class="chart reveal">
-					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Bias of specific humidity at 180 hPa relative to ERA5">
-						<img src="images/charts/bias-q180.webp" width="1000" height="715" loading="lazy" alt="Map of the global bias in specific humidity at 180 hPa for IFS-NEMO relative to ERA5, mostly negative (blue) across the tropics.">
-					</button>
-					<figcaption><strong>Bias of specific humidity at 180 hPa relative to ERA5</strong><span>Global bias map for IFS-NEMO historical-1990, with significance stippling.</span></figcaption>
-				</figure>
-				<figure class="chart reveal">
-					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Sea surface height variability, Agulhas region">
-						<img src="images/charts/ssh-agulhas.webp" width="1000" height="773" loading="lazy" alt="Map of sea surface height variability around southern Africa showing eddies in the Agulhas region.">
-					</button>
-					<figcaption><strong>Sea surface height variability, Agulhas region</strong><span>Frontier diagnostic on high-resolution IFS-NEMO output.</span></figcaption>
-				</figure>
-				<figure class="chart reveal">
-					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Arctic sea-ice thickness against PIOMAS">
-						<img src="images/charts/seaice-arctic.webp" width="1000" height="735" loading="lazy" alt="Six polar maps of Arctic sea-ice thickness for March and September from PIOMAS, IFS-NEMO and their difference.">
-					</button>
-					<figcaption><strong>Arctic sea-ice thickness against PIOMAS</strong><span>March and September, IFS-NEMO historical-1990 and the difference.</span></figcaption>
-				</figure>
-				<figure class="chart reveal">
-					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: Climatology of specific humidity at 180 hPa">
-						<img src="images/charts/climatology-q180.webp" width="1000" height="697" loading="lazy" alt="Global map of the mean specific humidity at 180 hPa with a strong tropical maximum in red.">
-					</button>
-					<figcaption><strong>Climatology of specific humidity at 180 hPa</strong><span>Long-term mean map from IFS-NEMO historical-1990.</span></figcaption>
-				</figure>
-				<figure class="chart reveal">
-					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: ENSO regression map against ERA5">
-						<img src="images/charts/enso-regression.webp" width="1000" height="700" loading="lazy" alt="Global map of the regression of sea surface temperature on the ENSO index compared to ERA5.">
-					</button>
-					<figcaption><strong>ENSO regression map against ERA5</strong><span>Teleconnection diagnostic of sea surface temperature.</span></figcaption>
-				</figure>
-				<figure class="chart reveal">
-					<button type="button" class="zoom-btn" data-zoom aria-label="Enlarge figure: A tropical cyclone through time">
-						<img src="images/charts/tropical-cyclone.webp" width="847" height="900" loading="lazy" alt="Nine panels of wind speed showing a tropical cyclone off the Pacific coast of Mexico evolving over three days.">
-					</button>
-					<figcaption><strong>A tropical cyclone through time</strong><span>Nine snapshots of the wind speed, IFS tco1279-orca025.</span></figcaption>
-				</figure>
-			</div>
-			<p class="note">Example figures produced by AQUA-diagnostics, taken from the <a href="https://aqua-diagnostics.readthedocs.io/en/latest/">package documentation</a> (Apache-2.0, © European Union).</p>
-
-			<div class="cta-band reveal">
-				<div>
-					<h3>See the real thing</h3>
-					<p>The dashboard covers the evaluation of the ClimateDT simulations with AQUA diagnostics. It requires authentication with a DestinE Platform (DESP) account.</p>
-				</div>
-				<p class="actions"><a class="btn btn-primary" href="https://climatedt-evaluation-charts.destine.eu/"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Open the evaluation charts <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
-			</div>
-		</div>
-	</section>
-
 	<!-- Ecosystem -->
-	<section class="section section-alt" id="ecosystem" aria-labelledby="eco-title">
+	<section class="section" id="ecosystem" aria-labelledby="eco-title">
 		<div class="container">
 			<div class="section-head">
 				<p class="eyebrow">How the pieces fit</p>
@@ -335,6 +276,33 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 					<p class="flow-links"><a class="link-chip" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="lc-kind">GitHub</span><span class="lc-name">AQUA-diagnostics</span></a><a class="link-chip" href="https://pypi.org/project/aqua-diagnostics/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg><span class="lc-kind">PyPI</span><span class="lc-name">aqua-diagnostics</span></a></p>
 				</li>
 			</ol>
+		</div>
+	</section>
+
+	<!-- Evaluation charts -->
+	<section class="section section-alt" id="charts" aria-labelledby="charts-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Destination Earth</p>
+				<h2 id="charts-title">ClimateDT evaluation charts</h2>
+			</div>
+
+			<div class="feature">
+				<div class="feature-text">
+					<p class="prose-lead">The AQUA plots of the Climate DT simulations are published on the <strong>ClimateDT evaluation charts</strong>, part of the Destination Earth platform.
+					Browse how the ICON, IFS-FESOM and IFS-NEMO simulations compare with observations and with each other.</p>
+					<p class="auth-note"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Access requires authentication with a DestinE Platform (DESP) account.</p>
+					<p class="actions">
+						<a class="btn btn-primary" href="https://climatedt-evaluation-charts.destine.eu/"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg> Open the evaluation charts <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+					</p>
+				</div>
+				<figure class="feature-fig">
+					<a class="fig-link" href="https://climatedt-evaluation-charts.destine.eu/" aria-label="Open the ClimateDT evaluation charts">
+						<img src="images/climatedt-simulations.webp" width="1503" height="748" loading="lazy" alt="Three globes showing the same kind of simulation from the ICON, IFS-FESOM and IFS-NEMO models: white clouds, coloured precipitation and swirling ocean temperature and currents.">
+					</a>
+					<figcaption>Climate DT simulations with ICON, IFS-FESOM and IFS-NEMO. Visualization by Andreas Müller (ECMWF), from the <a href="https://destine.ecmwf.int/climate-change-adaptation-digital-twin-climate-dt/">Destination Earth</a> website.</figcaption>
+				</figure>
+			</div>
 		</div>
 	</section>
 
@@ -476,7 +444,7 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 			</div>
 			<div class="reveal">
 				<div class="stack">
-					<div><h3>Languages</h3><ul class="chips"><li>Python</li><li>C++</li><li>Shell</li><li>Jupyter</li></ul></div>
+					<div><h3>Languages</h3><ul class="chips"><li>Python</li><li>C</li><li>C++</li><li>Shell</li><li>YAML</li><li>Markdown</li><li>Jupyter</li></ul></div>
 					<div><h3>Data &amp; formats</h3><ul class="chips"><li>NetCDF</li><li>GRIB</li><li>Zarr</li><li>FDB</li><li>CDO</li></ul></div>
 					<div><h3>Workflow</h3><ul class="chips"><li>git</li><li>conda / mamba</li><li>Containers</li><li>HPC clusters</li><li>Parallel programming</li></ul></div>
 					<div><h3>Models &amp; codes</h3><ul class="chips"><li>EC-Earth 4</li><li>IFS-NEMO</li><li>IFS-FESOM</li><li>ICON</li><li>PLUTO</li></ul></div>

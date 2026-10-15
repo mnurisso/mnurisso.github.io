@@ -413,21 +413,11 @@ mark { background: color-mix(in srgb, var(--warm) 30%, transparent); color: inhe
 .mini-timeline li > span:first-child { font: 600 0.82rem/1 var(--font-mono); color: var(--warm); margin-right: 0.5rem; }
 
 /* ---------- Evaluation charts ---------- */
-.gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
-.chart { display: flex; flex-direction: column; margin: 0; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
-.chart:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); box-shadow: var(--shadow); }
-.chart .zoom-btn { border-radius: 0; background: #fff; flex: none; aspect-ratio: 4 / 3; display: grid; place-items: center; }
-.chart .zoom-btn img { width: 100%; height: 100%; object-fit: contain; border: 0; border-radius: 0; box-shadow: none; }
-.chart .zoom-btn:hover img { transform: scale(1.03); box-shadow: none; }
-.chart figcaption { display: grid; gap: 0.2rem; padding: 0.9rem 1rem 1.1rem; font-size: 0.9rem; color: var(--muted); }
-.chart figcaption strong { color: var(--heading); font-size: 0.95rem; line-height: 1.3; }
-@media (max-width: 960px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .gallery { grid-template-columns: minmax(0, 1fr); } }
-
-.cta-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; margin-top: 2.5rem; padding: 1.5rem 1.75rem; border: 1px solid var(--border); border-radius: var(--radius); background: radial-gradient(60% 120% at 100% 0%, var(--accent-soft), transparent 70%), var(--surface); }
-.cta-band h3 { margin-bottom: 0.3rem; }
-.cta-band p { margin: 0; color: var(--muted); max-width: 40em; }
-.cta-band .actions { margin: 0; }
+.auth-note { display: flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.95rem; }
+.auth-note .icon { color: var(--warm); }
+.fig-link { display: block; border-radius: var(--radius); }
+.fig-link img { transition: transform 0.3s, box-shadow 0.3s; }
+.fig-link:hover img { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
 
 .callout { margin: 1.5rem 0 0; padding: 1.25rem 1.4rem; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius-sm); background: var(--surface); }
 .callout h3 { margin-bottom: 0.4rem; font-size: 1.15rem; }
