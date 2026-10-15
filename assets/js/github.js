@@ -47,7 +47,7 @@ async function hydrate(card) {
 	const repo = card.dataset.repo;
 	const me = card.dataset.me;
 	const pypi = card.dataset.pypi;
-	const out = { commits: 0, version: null };
+	const out = { commits: 0, version: null, stars: null, countStars: card.dataset.kind !== 'tools' };
 
 	const [info, contributors, pkg] = await Promise.allSettled([
 		cachedJSON(`${GH}/repos/${repo}`),
@@ -64,6 +64,7 @@ async function hydrate(card) {
 	if (info.status === 'fulfilled') {
 		const r = info.value;
 		if (r.language) items.unshift([`<span class="lang-${esc(r.language.replace(/\s+/g, '-'))}"><span class="lang-dot"></span></span><span>${esc(r.language)}</span>`]);
+		out.stars = r.stargazers_count;
 		items.push([`<svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span><strong>${num.format(r.stargazers_count)}</strong></span>`, 'GitHub stars']);
 		if (r.license?.spdx_id && r.license.spdx_id !== 'NOASSERTION') items.push([`<span>${esc(r.license.spdx_id)}</span>`, 'License']);
 	}
@@ -102,9 +103,32 @@ async function hydrateRepos(root = document) {
 	return {
 		commits: ok.reduce((s, r) => s + r.commits, 0),
 		version: ok.find((r) => r.version)?.version ?? null,
+		// Only trust the sum when every counted repository answered (rate limits can drop some).
+		stars: ok.filter((r) => r.countStars).every((r) => r.stars != null)
+			? ok.filter((r) => r.countStars).reduce((s, r) => s + r.stars, 0)
+			: null,
 	};
+}
+
+/** Personal activity numbers via the public GitHub search API. Keys are the data-live names. */
+async function hydrateProfile(user = 'mnurisso') {
+	const wanted = new Set([...document.querySelectorAll('[data-live]')].map((el) => el.dataset.live));
+	const d = new Date(Date.now() - 365 * 86400000).toISOString().slice(0, 10);
+	const queries = {
+		'commits-all': `${GH}/search/commits?q=author:${user}&per_page=1`,
+		'commits-year': `${GH}/search/commits?q=author:${user}+author-date:%3E${d}&per_page=1`,
+		'prs-year': `${GH}/search/issues?q=author:${user}+type:pr+created:%3E${d}&per_page=1`,
+		'issues-year': `${GH}/search/issues?q=author:${user}+type:issue+created:%3E${d}&per_page=1`,
+	};
+	const out = {};
+	await Promise.allSettled(Object.entries(queries).filter(([k]) => wanted.has(k)).map(async ([k, url]) => {
+		const data = await cachedJSON(url);
+		if (typeof data.total_count === 'number') out[k] = data.total_count;
+	}));
+	return out;
 }
 
 window.MN = window.MN || {};
 window.MN.hydrateRepos = hydrateRepos;
+window.MN.hydrateProfile = hydrateProfile;
 })();

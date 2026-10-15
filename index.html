@@ -28,7 +28,7 @@
 			{ "@type": "CollegeOrUniversity", "name": "University of Turin" }
 		],
 		"email": "mailto:matteo.nurisso@polito.it",
-		"sameAs": ["https://github.com/mnurisso/", "https://www.linkedin.com/in/matteo-nurisso/"],
+		"sameAs": ["https://github.com/mnurisso/", "https://www.linkedin.com/in/matteo-nurisso/", "https://orcid.org/0000-0002-5962-0680"],
 		"knowsAbout": ["Climate science", "Destination Earth", "Climate Digital Twin", "Paleoclimate", "EC-Earth", "Teleconnections", "Computational astrophysics", "Magnetic reconnection", "Magnetohydrodynamics", "Scientific software", "Science communication"]
 	}
 	</script>
@@ -71,6 +71,7 @@
 		<symbol id="i-cmd" viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></symbol>
 		<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
 		<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+		<symbol id="i-orcid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.3" cy="7.9" r="0.6"/><path d="M8.3 10.8v6M11.8 10.8v6h2a3 3 0 0 0 0-6z"/></symbol>
 	</defs>
 </svg>
 
@@ -133,12 +134,13 @@
 				<ul class="social" aria-label="Profiles">
 					<li><a href="https://github.com/mnurisso/" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span>GitHub</span></a></li>
 					<li><a href="https://www.linkedin.com/in/matteo-nurisso/" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><span>LinkedIn</span></a></li>
+					<li><a href="https://orcid.org/0000-0002-5962-0680" aria-label="ORCID"><svg class="icon" aria-hidden="true"><use href="#i-orcid"/></svg><span>ORCID</span></a></li>
 					<li><a href="mailto:matteo.nurisso@polito.it" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a></li>
 				</ul>
 			</div>
 
 			<figure class="portrait reveal">
-				<img src="images/portrait.webp" width="900" height="900" alt="Portrait of Matteo Nurisso smiling outdoors" fetchpriority="high">
+				<img src="images/portrait.webp" width="900" height="900" alt="Portrait of Matteo Nurisso smiling in front of a tree" fetchpriority="high">
 				<figcaption class="portrait-tag"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg> Turin, Italy</figcaption>
 			</figure>
 		</div>
@@ -175,11 +177,10 @@
 		</div>
 
 		<div class="container">
-			<dl class="stats reveal" id="stats" aria-label="At a glance">
-				<div><dt>Peer-reviewed &amp; submitted papers</dt><dd data-count="pubs">7</dd></div>
-				<div><dt>Conferences &amp; hackathons</dt><dd data-count="conference">21</dd></div>
-				<div><dt>Talks given</dt><dd data-count="talk">4</dd></div>
-				<div><dt>Years in research</dt><dd data-count="years" data-since="2018">8</dd></div>
+			<dl class="stats stats-3 reveal" id="stats" aria-label="At a glance">
+				<div><dt>Papers</dt><dd data-count="pubs">7</dd></div>
+				<div><dt>Commits on GitHub</dt><dd data-live="commits-all">5,651</dd></div>
+				<div><dt>Conferences</dt><dd data-count="conference">21</dd></div>
 			</dl>
 		</div>
 	</section>
@@ -234,6 +235,26 @@
 
 					<div class="feature feature-flip">
 						<div class="feature-text">
+							<h3>AQUA diagnostics</h3>
+							<p>AQUA-diagnostics contains the full set of diagnostic tools developed for the Destination Earth Climate Change Adaptation Digital Twin (ClimateDT).
+							It is designed to be used together with the AQUA core framework, which provides data access and preprocessing functionalities.</p>
+							<p>It includes the scientific tools configured as diagnostics to run for online monitoring of climate simulations.
+							Diagnostics can be executed standalone via the Python API, or through the <code>aqua analysis</code> wrapper provided by AQUA core.
+							I am a main contributor of the package.</p>
+							<p class="actions">
+								<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+								<a class="btn btn-sm" href="https://aqua-diagnostics.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Documentation</a>
+								<a class="btn btn-sm btn-primary" href="software.html#diagnostics">More details <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+							</p>
+						</div>
+						<figure class="feature-fig">
+							<img src="images/precipitation.webp" width="1250" height="628" loading="lazy" alt="Global map of precipitation in a high-resolution climate simulation, with a strong tropical rain band shown in teal over brown dry regions.">
+							<figcaption>Global precipitation field from a high-resolution climate simulation.</figcaption>
+						</figure>
+					</div>
+
+					<div class="feature feature-single">
+						<div class="feature-text">
 							<h3>EPOCHAL</h3>
 							<p><strong>EPOCHAL</strong> (Earth system modeling of PaleOClimatic HyperthermALs) is a PRIN project
 							that aims to study the <strong>paleoclimate</strong> with the use of Earth system models.
@@ -247,10 +268,6 @@
 								<a class="btn btn-sm" href="https://ec-earth.org/">EC-Earth consortium <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
 							</p>
 						</div>
-						<figure class="feature-fig">
-							<img src="images/precipitation.webp" width="1250" height="628" loading="lazy" alt="Global map of precipitation in a high-resolution climate simulation, with a strong tropical rain band shown in teal over brown dry regions.">
-							<figcaption>Global precipitation field from a high-resolution climate simulation.</figcaption>
-						</figure>
 					</div>
 				</div>
 
@@ -385,28 +402,49 @@
 			</div>
 
 			<div class="cards cards-3">
-				<article class="card repo" data-repo="DestinE-Climate-DT/AQUA" data-pypi="aqua-core" data-me="mnurisso">
+				<article class="card repo" data-repo="DestinE-Climate-DT/AQUA" data-me="mnurisso" data-pypi="aqua-core">
 					<header>
 						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
 						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a></h3>
+						<span class="tag tag-ok">Main developer</span>
 					</header>
 					<p>Application for QUality Assessment — a modular Python framework for running diagnostics on high-resolution climate models, part of the operational ClimateDT workflow.</p>
 					<ul class="repo-meta"></ul>
 				</article>
-				<article class="card repo" data-repo="DestinE-Climate-DT/AQUA-diagnostics" data-pypi="aqua-diagnostics" data-me="mnurisso">
+				<article class="card repo" data-repo="DestinE-Climate-DT/AQUA-diagnostics" data-me="mnurisso" data-pypi="aqua-diagnostics">
 					<header>
 						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
 						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">AQUA-diagnostics</a></h3>
+						<span class="tag tag-ok">Main contributor</span>
 					</header>
-					<p>The diagnostics set of the AQUA framework for high-resolution climate model evaluation.</p>
+					<p>The full set of diagnostic tools for online monitoring and evaluation of ClimateDT climate simulations.</p>
 					<ul class="repo-meta"></ul>
 				</article>
-				<article class="card repo" data-repo="mnurisso/programming_notes" data-me="mnurisso">
+				<article class="card repo" data-repo="DestinE-Climate-DT/Climate-DT-catalog" data-me="mnurisso">
 					<header>
 						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
-						<h3><a href="https://github.com/mnurisso/programming_notes">programming_notes</a></h3>
+						<h3><a href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog">Climate-DT-catalog</a></h3>
+						<span class="tag tag-ok">Main contributor</span>
 					</header>
-					<p>Code notes: useful notes about coding in C++, python and notes on utilities like git, conda, cluster usage etc.</p>
+					<p>AQUA catalog for Climate DT: describes the ClimateDT simulations so that AQUA can find and read them.</p>
+					<ul class="repo-meta"></ul>
+				</article>
+				<article class="card repo" data-repo="jhardenberg/smmregrid" data-me="mnurisso" data-pypi="smmregrid">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/jhardenberg/smmregrid">smmregrid</a></h3>
+						<span class="tag">Contributor</span>
+					</header>
+					<p>A compact regridder using sparse matrix multiplication.</p>
+					<ul class="repo-meta"></ul>
+				</article>
+				<article class="card repo" data-repo="oloapinivad/ecmean" data-me="mnurisso" data-pypi="ecmean4">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/oloapinivad/ecmean">ECmean4</a></h3>
+						<span class="tag">Contributor</span>
+					</header>
+					<p>EC-Earth basic evaluation tool: a lightweight evaluation tool for global climate models.</p>
 					<ul class="repo-meta"></ul>
 				</article>
 			</div>
@@ -624,6 +662,7 @@
 						<button type="button" class="icon-btn icon-btn-sm" id="copy-email" aria-label="Copy email address" title="Copy email"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></li>
 					<li><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><a href="https://github.com/mnurisso/">Github</a></li>
 					<li><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/matteo-nurisso/">Linkedin</a></li>
+					<li><svg class="icon" aria-hidden="true"><use href="#i-orcid"/></svg><a href="https://orcid.org/0000-0002-5962-0680">ORCID</a></li>
 				</ul>
 			</div>
 		</div>

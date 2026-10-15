@@ -60,6 +60,7 @@ navToggle?.addEventListener('click', () => setNav(navToggle.getAttribute('aria-e
 nav?.addEventListener('click', (e) => { if (e.target.closest('a')) setNav(false); });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && nav?.classList.contains('is-open')) setNav(false); });
 
+let spyUpdate = () => {};
 let ticking = false;
 function onScroll() {
 	if (ticking) return;
@@ -68,6 +69,7 @@ function onScroll() {
 		const y = window.scrollY;
 		header.classList.toggle('is-scrolled', y > 8);
 		const max = document.documentElement.scrollHeight - window.innerHeight;
+		spyUpdate();
 		if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(1, y / max) : 0})`;
 		ticking = false;
 	});
@@ -77,20 +79,19 @@ onScroll();
 
 const spyLinks = $$('.nav a[href*="#"], .subnav a[href*="#"]').filter((a) => new URL(a.href, location.href).pathname === location.pathname);
 if (spyLinks.length) {
-	const byId = new Map(spyLinks.map((a) => [new URL(a.href).hash.slice(1), a]));
-	const sections = [...byId.keys()].map((id) => document.getElementById(id)).filter(Boolean);
-	const spy = new IntersectionObserver((entries) => {
-		for (const entry of entries) {
-			if (!entry.isIntersecting) continue;
-			spyLinks.forEach((a) => a.classList.remove('is-active'));
-			byId.get(entry.target.id)?.classList.add('is-active');
-		}
-	}, { rootMargin: '-45% 0px -50% 0px' });
-	sections.forEach((s) => spy.observe(s));
-	// Clear the highlight while in the hero.
-	const hero = $('#about');
-	if (hero) new IntersectionObserver(([e]) => { if (e.isIntersecting) spyLinks.forEach((a) => a.classList.remove('is-active')); }, { rootMargin: '-40% 0px -40% 0px' }).observe(hero);
+	const entries = spyLinks
+		.map((a) => ({ a, section: document.getElementById(new URL(a.href).hash.slice(1)) }))
+		.filter((e) => e.section);
+	spyUpdate = () => {
+		// The active section is the last one whose top has passed a line a bit below the sticky bars.
+		const line = window.innerHeight * 0.35;
+		let current = null;
+		for (const e of entries) if (e.section.getBoundingClientRect().top <= line) current = e.section.id;
+		for (const e of entries) e.a.classList.toggle('is-active', e.section.id === current);
+	};
 }
+
+onScroll();
 
 /* ---------- Reveal on scroll ---------- */
 const revealEls = $$('.reveal');
@@ -216,13 +217,15 @@ if (projectCards.length) {
 }
 
 /* ---------- Counters ---------- */
-function countUp(el, target) {
-	if (reducedMotion || target === 0) { el.textContent = target; return; }
+const fmt = (n) => n.toLocaleString('en');
+const current = (el) => parseInt(el.textContent.replace(/[^0-9]/g, ''), 10) || 0;
+function countUp(el, target, from = 0) {
+	if (reducedMotion || target === from) { el.textContent = fmt(target); return; }
 	const duration = 900;
 	const start = performance.now();
 	const tick = (now) => {
 		const p = Math.min(1, (now - start) / duration);
-		el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+		el.textContent = fmt(Math.round(from + (target - from) * (1 - Math.pow(1 - p, 3))));
 		if (p < 1) requestAnimationFrame(tick);
 	};
 	requestAnimationFrame(tick);
@@ -231,7 +234,6 @@ function counterTarget(el) {
 	const key = el.dataset.count;
 	if (key === 'pubs') return $$('#pubs .pub').length;
 	if (key === 'years') return new Date().getFullYear() - Number(el.dataset.since);
-	if (key === 'active') return $$('[data-kind="active"]').length;
 	return $$(`#events-list .event[data-type="${key}"]`).length;
 }
 const counters = $$('[data-count]');
@@ -249,14 +251,19 @@ if (counters.length && 'IntersectionObserver' in window) {
 }
 
 /* ---------- Live GitHub / PyPI data ---------- */
-MN.hydrateRepos().then((stats) => {
+// The HTML ships sensible fallback numbers; live values replace them when available.
+MN.hydrateRepos?.().then((stats) => {
 	if (!stats) return;
-	const commits = $('[data-live="commits"]');
-	if (commits && stats.commits) countUp(commits, stats.commits);
-	const version = $('[data-live="version"]');
-	if (version && stats.version) version.textContent = `v${stats.version}`;
-	// Cards changed height: refresh scroll-linked UI.
+	const stars = $('[data-live="stars"]');
+	if (stars && stats.stars) countUp(stars, stats.stars, current(stars));
 	onScroll();
+}).catch(() => { /* stay static */ });
+
+MN.hydrateProfile?.().then((values) => {
+	for (const [key, value] of Object.entries(values)) {
+		const el = $(`[data-live="${key}"]`);
+		if (el) countUp(el, value, current(el));
+	}
 }).catch(() => { /* stay static */ });
 
 /* ---------- Copy buttons ---------- */
@@ -298,6 +305,7 @@ if (palette) {
 		{ label: 'Publications', hint: 'Go to', icon: 'book', run: go('index.html', 'publications') },
 		{ label: 'Scientific software', hint: 'Go to', icon: 'package', run: go('software.html') },
 		{ label: 'AQUA', hint: 'Software', icon: 'package', run: go('software.html', 'aqua') },
+		{ label: 'AQUA diagnostics', hint: 'Software', icon: 'package', run: go('software.html', 'diagnostics') },
 		{ label: 'Career', hint: 'Go to', icon: 'book', run: go('index.html', 'career') },
 		{ label: 'Talks & events', hint: 'Go to', icon: 'pin', run: go('index.html', 'events') },
 		{ label: 'Outreach', hint: 'Go to', icon: 'users', run: go('index.html', 'outreach') },
@@ -305,6 +313,7 @@ if (palette) {
 		{ label: 'Toggle light / dark theme', hint: 'Action', icon: 'sun', run: () => setTheme(currentTheme() === 'dark' ? 'light' : 'dark') },
 		{ label: 'Copy email address', hint: 'Action', icon: 'copy', run: () => copyText('matteo.nurisso@polito.it', 'Email address copied') },
 		{ label: 'Open GitHub profile', hint: 'Link', icon: 'github', run: () => window.open('https://github.com/mnurisso/', '_blank', 'noopener') },
+		{ label: 'Open ORCID profile', hint: 'Link', icon: 'orcid', run: () => window.open('https://orcid.org/0000-0002-5962-0680', '_blank', 'noopener') },
 		{ label: 'Open LinkedIn profile', hint: 'Link', icon: 'linkedin', run: () => window.open('https://www.linkedin.com/in/matteo-nurisso/', '_blank', 'noopener') },
 	];
 	let visible = commands;

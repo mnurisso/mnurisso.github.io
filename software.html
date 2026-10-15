@@ -50,6 +50,7 @@
 		<symbol id="i-cmd" viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></symbol>
 		<symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
 		<symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+		<symbol id="i-orcid" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="8.3" cy="7.9" r="0.6"/><path d="M8.3 10.8v6M11.8 10.8v6h2a3 3 0 0 0 0-6z"/></symbol>
 	</defs>
 </svg>
 
@@ -103,12 +104,13 @@
 			<p class="lead">Tools I develop to access, evaluate and understand the output of high-resolution climate models —
 			written in Python, used in the operational workflow of the Destination Earth Climate Digital Twin, and open to everyone.</p>
 
-			<dl class="stats stats-inline" aria-label="Software at a glance">
-				<div><dt>Commits across these projects</dt><dd data-live="commits">—</dd></div>
-				<div><dt>Active projects</dt><dd data-count="active">4</dd></div>
-				<div><dt>Core release on PyPI</dt><dd data-live="version">—</dd></div>
-				<div><dt>License</dt><dd>Apache-2.0</dd></div>
+			<dl class="stats stats-inline" aria-label="Personal GitHub statistics">
+				<div><dt>GitHub stars across these projects</dt><dd data-live="stars">66</dd></div>
+				<div><dt>Commits, last 12 months</dt><dd data-live="commits-year">744</dd></div>
+				<div><dt>Pull requests opened, last 12 months</dt><dd data-live="prs-year">187</dd></div>
+				<div><dt>Issues opened, last 12 months</dt><dd data-live="issues-year">79</dd></div>
 			</dl>
+			<p class="stats-note">Public activity of <a href="https://github.com/mnurisso">@mnurisso</a> on GitHub, fetched live.</p>
 		</div>
 	</section>
 
@@ -116,6 +118,7 @@
 	<nav class="subnav" aria-label="On this page">
 		<div class="container subnav-inner">
 			<a href="#aqua">AQUA</a>
+			<a href="#diagnostics">Diagnostics</a>
 			<a href="#ecosystem">Ecosystem</a>
 			<a href="#projects">Projects</a>
 			<a href="#stack">Stack</a>
@@ -196,8 +199,43 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 		</div>
 	</section>
 
+	<!-- AQUA diagnostics -->
+	<section class="section section-alt" id="diagnostics" aria-labelledby="diag-title">
+		<div class="container">
+			<div class="section-head">
+				<p class="eyebrow">Companion package</p>
+				<h2 id="diag-title">AQUA diagnostics</h2>
+				<p class="section-sub">The scientific tools that run on top of the AQUA core to monitor and evaluate climate simulations.</p>
+			</div>
+
+			<div class="feature feature-flip">
+				<div class="feature-text">
+					<p>AQUA-diagnostics contains the full set of diagnostic tools developed for the Destination Earth Climate Change Adaptation Digital Twin (ClimateDT).
+					It is designed to be used together with the AQUA core framework, which provides data access and preprocessing functionalities.</p>
+					<p>The package includes the scientific tools configured as diagnostics to run for online monitoring of climate simulations.
+					Diagnostics can be executed standalone via the Python API, or through the <code>aqua analysis</code> wrapper provided by AQUA core.
+					I am a main contributor of AQUA-diagnostics.</p>
+
+					<div class="code code-inline"><pre><code>pip install aqua-diagnostics</code></pre><button type="button" class="icon-btn icon-btn-sm" data-copy aria-label="Copy command" title="Copy"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+					<p class="install-note">Requires a working AQUA core installation. See the repository for the full setup, including catalogs and auxiliary files.</p>
+
+					<p class="actions">
+						<a class="btn btn-primary btn-sm" href="https://aqua-diagnostics.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Documentation</a>
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/aqua-diagnostics/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI</a>
+						<a class="btn btn-sm" href="https://doi.org/10.5281/zenodo.17776618">Zenodo DOI</a>
+					</p>
+				</div>
+				<figure class="feature-fig">
+					<img src="images/precipitation.webp" width="1250" height="628" loading="lazy" alt="Global map of precipitation in a high-resolution climate simulation, with a strong tropical rain band shown in teal over brown dry regions.">
+					<figcaption>Global precipitation field from a high-resolution climate simulation.</figcaption>
+				</figure>
+			</div>
+		</div>
+	</section>
+
 	<!-- Ecosystem -->
-	<section class="section section-alt" id="ecosystem" aria-labelledby="eco-title">
+	<section class="section" id="ecosystem" aria-labelledby="eco-title">
 		<div class="container">
 			<div class="section-head">
 				<p class="eyebrow">How the pieces fit</p>
@@ -209,32 +247,32 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 				<li class="flow-node">
 					<span class="flow-step">1</span>
 					<h3>Climate models</h3>
-					<p>ICON, IFS-NEMO, IFS-FESOM in the ClimateDT, and EC-Earth&nbsp;4 simulations.</p>
+					<p>ICON, IFS-NEMO and IFS-FESOM simulations of the ClimateDT.</p>
 				</li>
 				<li class="flow-node">
 					<span class="flow-step">2</span>
-					<h3>Catalogs</h3>
-					<p>Describe where and how the data live, for ClimateDT and for EC-Earth&nbsp;4.</p>
-					<p class="flow-links"><a href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog">Climate-DT-catalog</a> <a href="https://github.com/mnurisso/ece-catalogue">ece-catalogue</a></p>
+					<h3>Catalog</h3>
+					<p>Describes where and how the ClimateDT data live, so AQUA can find and read them.</p>
+					<p class="flow-links"><a class="link-chip" href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="lc-kind">GitHub</span><span class="lc-name">Climate-DT-catalog</span></a></p>
 				</li>
 				<li class="flow-node flow-node-main">
 					<span class="flow-step">3</span>
 					<h3>AQUA core</h3>
 					<p>Data access, regridding, averaging and aggregation on large datasets.</p>
-					<p class="flow-links"><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a> <a href="https://pypi.org/project/aqua-core/">aqua-core</a></p>
+					<p class="flow-links"><a class="link-chip" href="https://github.com/DestinE-Climate-DT/AQUA"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="lc-kind">GitHub</span><span class="lc-name">AQUA</span></a><a class="link-chip" href="https://pypi.org/project/aqua-core/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg><span class="lc-kind">PyPI</span><span class="lc-name">aqua-core</span></a></p>
 				</li>
 				<li class="flow-node">
 					<span class="flow-step">4</span>
 					<h3>AQUA diagnostics</h3>
 					<p>State-of-the-art diagnostics on low-resolution data and frontier diagnostics on high-resolution data.</p>
-					<p class="flow-links"><a href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">AQUA-diagnostics</a> <a href="https://pypi.org/project/aqua-diagnostics/">aqua-diagnostics</a></p>
+					<p class="flow-links"><a class="link-chip" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg><span class="lc-kind">GitHub</span><span class="lc-name">AQUA-diagnostics</span></a><a class="link-chip" href="https://pypi.org/project/aqua-diagnostics/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg><span class="lc-kind">PyPI</span><span class="lc-name">aqua-diagnostics</span></a></p>
 				</li>
 			</ol>
 		</div>
 	</section>
 
 	<!-- Projects -->
-	<section class="section" id="projects" aria-labelledby="projects-title">
+	<section class="section section-alt" id="projects" aria-labelledby="projects-title">
 		<div class="container">
 			<div class="section-head">
 				<p class="eyebrow">Repositories</p>
@@ -246,14 +284,15 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 				<div class="filters" role="group" aria-label="Filter projects" data-filter-group="projects">
 					<button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
 					<button type="button" class="chip" data-filter="active" aria-pressed="false">Active development</button>
-					<button type="button" class="chip" data-filter="tools" aria-pressed="false">Tools &amp; notes</button>
+					<button type="button" class="chip" data-filter="contrib" aria-pressed="false">Contributions</button>
+					<button type="button" class="chip" data-filter="tools" aria-pressed="false">Notes</button>
 					<button type="button" class="chip" data-filter="legacy" aria-pressed="false">Legacy</button>
 				</div>
 			</div>
 
 			<div class="cards cards-3" id="projects-grid">
 
-				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/AQUA" data-pypi="aqua-core" data-me="mnurisso">
+				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/AQUA" data-me="mnurisso" data-pypi="aqua-core">
 					<header>
 						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
 						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA">AQUA</a></h3>
@@ -262,24 +301,24 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 					<p>The model evaluation framework at the heart of the ecosystem: core engine for data access, regridding and aggregation, part of the operational ClimateDT workflow.</p>
 					<ul class="repo-meta"></ul>
 					<p class="actions">
-						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA">Repository</a>
-						<a class="btn btn-sm" href="https://aqua.readthedocs.io/en/latest/">Docs</a>
-						<a class="btn btn-sm" href="https://pypi.org/project/aqua-core/">PyPI</a>
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repository</a>
+						<a class="btn btn-sm" href="https://aqua.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Docs</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/aqua-core/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI package</a>
 					</p>
 				</article>
 
-				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/AQUA-diagnostics" data-pypi="aqua-diagnostics" data-me="mnurisso">
+				<article class="card repo" data-kind="active" data-repo="DestinE-Climate-DT/AQUA-diagnostics" data-me="mnurisso" data-pypi="aqua-diagnostics">
 					<header>
 						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
 						<h3><a href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">AQUA-diagnostics</a></h3>
-						<span class="tag">Contributor</span>
+						<span class="tag tag-ok">Main contributor</span>
 					</header>
-					<p>The diagnostics set of the AQUA framework for high-resolution climate model evaluation: the science that runs on top of the core engine.</p>
+					<p>The full set of diagnostic tools for online monitoring and evaluation of ClimateDT climate simulations, built on top of the AQUA core.</p>
 					<ul class="repo-meta"></ul>
 					<p class="actions">
-						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics">Repository</a>
-						<a class="btn btn-sm" href="https://aqua-diagnostics.readthedocs.io/en/latest/">Docs</a>
-						<a class="btn btn-sm" href="https://pypi.org/project/aqua-diagnostics/">PyPI</a>
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/AQUA-diagnostics"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repository</a>
+						<a class="btn btn-sm" href="https://aqua-diagnostics.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Docs</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/aqua-diagnostics/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI package</a>
 					</p>
 				</article>
 
@@ -292,21 +331,37 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 					<p>AQUA catalog for Climate DT: describes the ClimateDT simulations so that AQUA can find and read them.</p>
 					<ul class="repo-meta"></ul>
 					<p class="actions">
-						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog">Repository</a>
+						<a class="btn btn-sm" href="https://github.com/DestinE-Climate-DT/Climate-DT-catalog"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repository</a>
 					</p>
 				</article>
 
-				<article class="card repo" data-kind="active" data-repo="mnurisso/ece-catalogue" data-me="mnurisso">
+				<article class="card repo" data-kind="contrib" data-repo="jhardenberg/smmregrid" data-me="mnurisso" data-pypi="smmregrid">
 					<header>
 						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
-						<h3><a href="https://github.com/mnurisso/ece-catalogue">ece-catalogue</a></h3>
-						<span class="tag tag-ok">Author</span>
+						<h3><a href="https://github.com/jhardenberg/smmregrid">smmregrid</a></h3>
+						<span class="tag">Contributor</span>
 					</header>
-					<p>EC-Earth 4 AQUA catalog: brings EC-Earth simulations into the AQUA framework.</p>
+					<p>A compact regridder using sparse matrix multiplication, used by AQUA for regridding.</p>
 					<ul class="repo-meta"></ul>
 					<p class="actions">
-						<a class="btn btn-sm" href="https://github.com/mnurisso/ece-catalogue">Repository</a>
-						<a class="btn btn-sm" href="https://ec-earth.org/">EC-Earth</a>
+						<a class="btn btn-sm" href="https://github.com/jhardenberg/smmregrid"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repository</a>
+						<a class="btn btn-sm" href="https://smmregrid.readthedocs.io"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Docs</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/smmregrid/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI package</a>
+					</p>
+				</article>
+
+				<article class="card repo" data-kind="contrib" data-repo="oloapinivad/ecmean" data-me="mnurisso" data-pypi="ecmean4">
+					<header>
+						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
+						<h3><a href="https://github.com/oloapinivad/ecmean">ECmean4</a></h3>
+						<span class="tag">Contributor</span>
+					</header>
+					<p>EC-Earth basic evaluation tool: a lightweight evaluation tool for global climate models.</p>
+					<ul class="repo-meta"></ul>
+					<p class="actions">
+						<a class="btn btn-sm" href="https://github.com/oloapinivad/ecmean"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repository</a>
+						<a class="btn btn-sm" href="https://ecmean.readthedocs.io/en/latest/"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg> Docs</a>
+						<a class="btn btn-sm" href="https://pypi.org/project/ecmean4/"><svg class="icon" aria-hidden="true"><use href="#i-package"/></svg> PyPI package</a>
 					</p>
 				</article>
 
@@ -319,20 +374,7 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 					<p>A repository with useful notes about coding in C++, python and notes on utilities like git, conda, cluster usage etc.</p>
 					<ul class="repo-meta"></ul>
 					<p class="actions">
-						<a class="btn btn-sm" href="https://github.com/mnurisso/programming_notes">Repository</a>
-					</p>
-				</article>
-
-				<article class="card repo" data-kind="tools" data-repo="mnurisso/ocp-tool">
-					<header>
-						<svg class="icon icon-lg" aria-hidden="true"><use href="#i-github"/></svg>
-						<h3><a href="https://github.com/mnurisso/ocp-tool">ocp-tool</a></h3>
-						<span class="tag">Fork</span>
-					</header>
-					<p>A tool generating OASIS3-MCT input files, modifying the OpenIFS land sea mask and runoff map to fit the ocean grid.</p>
-					<ul class="repo-meta"></ul>
-					<p class="actions">
-						<a class="btn btn-sm" href="https://github.com/mnurisso/ocp-tool">Repository</a>
+						<a class="btn btn-sm" href="https://github.com/mnurisso/programming_notes"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> Repository</a>
 					</p>
 				</article>
 
@@ -359,7 +401,7 @@ mamba activate aqua</code></pre><button type="button" class="icon-btn icon-btn-s
 	</section>
 
 	<!-- Stack -->
-	<section class="section section-alt" id="stack" aria-labelledby="stack-title">
+	<section class="section" id="stack" aria-labelledby="stack-title">
 		<div class="container split">
 			<div class="section-head">
 				<p class="eyebrow">Tools of the trade</p>
