@@ -183,7 +183,7 @@ if (pubs.length) {
 const events = $$('#events-list .event');
 const attended = events.filter((e) => !e.hasAttribute('data-upcoming')); // upcoming events are listed but not counted
 if (events.length) {
-	for (const key of ['all', 'conference', 'talk', 'workshop']) {
+	for (const key of ['all', 'conference', 'project', 'talk', 'workshop']) {
 		const n = key === 'all' ? attended.length : attended.filter((e) => e.dataset.type === key).length;
 		const badge = $(`[data-count-for="${key}"]`);
 		if (badge) badge.textContent = n;
@@ -235,7 +235,9 @@ function counterTarget(el) {
 	const key = el.dataset.count;
 	if (key === 'pubs') return $$('#pubs .pub').length;
 	if (key === 'years') return new Date().getFullYear() - Number(el.dataset.since);
-	return $$(`#events-list .event[data-type="${key}"]:not([data-upcoming])`).length;
+	// the hero "Conferences" tile also counts project meetings
+	const types = key === 'conference' ? ['conference', 'project'] : [key];
+	return $$('#events-list .event:not([data-upcoming])').filter((e) => types.includes(e.dataset.type)).length;
 }
 const counters = $$('[data-count]');
 if (counters.length && 'IntersectionObserver' in window) {

@@ -93,7 +93,7 @@ Data-attribute contracts (HTML ↔ JS). Keep them intact when editing markup:
 | Markup | Behaviour |
 |---|---|
 | `[role=tab]` / `aria-controls` panels inside `[data-tabs]` | Tabs with arrow-key support. `[data-open-tab="climate"]` links switch tabs |
-| `[data-filter-group="pubs\|events\|projects"] .chip[data-filter]` | Filter chips. Items carry `data-topic` (`climate`/`astro`) for `.pub`, `data-type` (`conference`/`talk`/`workshop`) for `.event`, `data-kind` (`active`/`contrib`/`tools`/`legacy`) for project cards |
+| `[data-filter-group="pubs\|events\|projects"] .chip[data-filter]` | Filter chips. Items carry `data-topic` (`climate`/`astro`) for `.pub`, `data-type` (`conference`/`project`/`talk`/`workshop`; `project` = Destination Earth and EC-Earth project meetings; the hero "Conferences" tile counts conference + project) for `.event`, `data-kind` (`active`/`contrib`/`tools`/`legacy`) for project cards |
 | `.event[data-year]` | Year gutter: JS adds `.repeat` to hide the repeated year |
 | `#pub-search` | Live text search over `.pub` |
 | `[data-filter-link="astro"]` | Link that sets the publication filter |
@@ -174,7 +174,7 @@ ClimateDT simulations visual (Andreas Müller, ECMWF, destine.ecmwf.int), precip
   community resources `DestinE-Climate-DT/climatedt-community-resources`.
 - ClimateDT user guide: `platform.destine.eu/services/documents-and-api/doc/?service_name=climate-dt-user-guide`.
 - Evaluation charts dashboard: `climatedt-evaluation-charts.destine.eu` (requires DESP authentication; do not try to scrape it).
-- Current numbers (static fallbacks): 7 papers, 21 conferences/hackathons, 4 talks, 5 workshops.
+- Current numbers (static fallbacks): 7 papers, 21 conferences incl. project meetings (12 conferences + 9 project meetings), 4 talks, 6 workshops.
 
 ## 7. Verify every change
 
