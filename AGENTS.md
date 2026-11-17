@@ -95,6 +95,7 @@ Data-attribute contracts (HTML ↔ JS). Keep them intact when editing markup:
 | `[role=tab]` / `aria-controls` panels inside `[data-tabs]` | Tabs with arrow-key support. `[data-open-tab="climate"]` links switch tabs |
 | `[data-filter-group="pubs\|events\|projects"] .chip[data-filter]` | Filter chips. Items carry `data-topic` (`climate`/`astro`) for `.pub`, `data-type` (`conference`/`project`/`talk`/`workshop`; `project` = Destination Earth and EC-Earth project meetings; the hero "Conferences" tile counts conference + project) for `.event`, `data-kind` (`active`/`contrib`/`tools`/`legacy`) for project cards |
 | `.event[data-year]` | Year gutter: JS adds `.repeat` to hide the repeated year |
+| `#events-more` | "Show all N events" / "Show fewer" toggle under `#events-list`: only the first 10 matching events show by default (`LIMIT` in `main.js`); resets when the filter changes; hidden when ≤ 10 match. No JS = everything is shown |
 | `#pub-search` | Live text search over `.pub` |
 | `[data-filter-link="astro"]` | Link that sets the publication filter |
 | `[data-count="pubs\|conference\|talk"]` | Counters computed from the DOM and animated up from 0 |
