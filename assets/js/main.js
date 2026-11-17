@@ -188,16 +188,34 @@ if (events.length) {
 		const badge = $(`[data-count-for="${key}"]`);
 		if (badge) badge.textContent = n;
 	}
+	const LIMIT = 10; // items shown before "Show all"
+	const more = $('#events-more');
+	let expanded = false;
+	let current = 'all';
 	const applyEvents = (type) => {
-		let lastYear = null;
+		if (type !== current) expanded = false;
+		current = type;
+		let lastYear = null, n = 0;
 		for (const li of events) {
-			const ok = type === 'all' || li.dataset.type === type;
-			li.hidden = !ok;
-			if (!ok) continue;
+			const match = type === 'all' || li.dataset.type === type;
+			if (match) n++;
+			li.hidden = !match || (!expanded && n > LIMIT);
+			if (li.hidden) continue;
 			li.classList.toggle('repeat', li.dataset.year === lastYear);
 			lastYear = li.dataset.year;
 		}
+		if (more) {
+			more.hidden = n <= LIMIT;
+			more.textContent = expanded ? 'Show fewer' : `Show all ${n} events`;
+			more.setAttribute('aria-expanded', String(expanded));
+		}
 	};
+	more?.addEventListener('click', () => {
+		const wasExpanded = expanded;
+		expanded = !expanded;
+		applyEvents(current);
+		if (wasExpanded) $('#events-list').scrollIntoView({ block: 'start' });
+	});
 	setupFilter('events', applyEvents);
 	applyEvents('all');
 }

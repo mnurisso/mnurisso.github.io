@@ -390,6 +390,8 @@ mark { background: color-mix(in srgb, var(--warm) 30%, transparent); color: inhe
 .events { list-style: none; border-top: 1px solid var(--border); }
 .event { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) auto; gap: 1rem; align-items: baseline; padding: 1rem 0; border-bottom: 1px solid var(--border); animation: fade-up 0.35s both; }
 .event[hidden] { display: none; }
+.more-wrap { margin-top: 1.25rem; text-align: center; }
+.more-wrap button[hidden] { display: none; }
 .event-year { font: 600 0.95rem/1.4 var(--font-mono); color: var(--accent); }
 .event.repeat .event-year { visibility: hidden; }
 .event-title { display: block; }
