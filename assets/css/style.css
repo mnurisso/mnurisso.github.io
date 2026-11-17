@@ -188,6 +188,7 @@ html:not(.js) .tablist { display: none; }
 .tag-ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
 .tag-warn, .pill-now { background: var(--warm-soft); color: var(--warm); border-color: transparent; }
 .tag-conference { background: var(--accent-soft); color: var(--accent); border-color: transparent; }
+.tag-project { background: var(--surface-2); color: var(--heading); border-color: transparent; }
 .tag-talk { background: var(--warm-soft); color: var(--warm); border-color: transparent; }
 .tag-workshop { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
 .pill-now { background: var(--accent-soft); color: var(--accent); }
